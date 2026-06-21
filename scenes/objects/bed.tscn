@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dst1gwmp8i8ot"]
+
+[ext_resource type="PackedScene" uid="uid://c5itu05r4v5gk" path="res://assets/LowPolyBed.fbx" id="1_akt7f"]
+
+[node name="Bed" unique_id=1283486119 instance=ExtResource("1_akt7f")]
+
+[node name="Cube_006" parent="." index="0" unique_id=336533487]
+transform = Transform3D(100, 1.5632411e-12, 6.833143e-20, 0, -4.3711384e-06, 99.99999, 1.5632412e-12, -99.99999, -4.3711384e-06, 0, 0, 0)

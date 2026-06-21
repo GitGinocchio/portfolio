@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bc76rlg07r842"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h4bas"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Terminal" type="Sprite3D" unique_id=1501954215]
+texture = SubResource("ViewportTexture_h4bas")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=237809766]
+size = Vector2i(1920, 1080)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=160780096]
+texture_filter = 6
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control" unique_id=1184969120]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CodeEdit" type="CodeEdit" parent="SubViewport/Control" unique_id=581549143]
+texture_filter = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+wrap_mode = 1

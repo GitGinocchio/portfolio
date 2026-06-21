@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://5isk12iy07bd"]
+
+[ext_resource type="PackedScene" uid="uid://dfqbde24hpdgd" path="res://assets/LowPolyWallWindowed.fbx" id="1_wem0v"]
+[ext_resource type="PackedScene" uid="uid://cn1h67jle6001" path="res://scenes/objects/curtain.tscn" id="2_e7ffr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmnud"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.5882353, 1, 1, 0.078431375)
+metallic = 0.2
+roughness = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_fmnud"]
+material = SubResource("StandardMaterial3D_fmnud")
+size = Vector3(1, 0.005, 1)
+
+[node name="WallWindowed" unique_id=1841894694 instance=ExtResource("1_wem0v")]
+
+[node name="LowPolyCurtain" parent="." index="1" unique_id=1677595663 instance=ExtResource("2_e7ffr")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.01, 0.3, 0.125)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2" unique_id=1144749699]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.2666071, -0.038734555)
+mesh = SubResource("BoxMesh_fmnud")

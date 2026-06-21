@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cpr4wpc5rofdg"]
+
+[ext_resource type="PackedScene" uid="uid://cttq2mvf6algu" path="res://scenes/environment/room.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://78wl436fbupu" path="res://scenes/player.tscn" id="2_uu6xs"]
+
+[node name="Main" type="Node3D" unique_id=1481455819]
+
+[node name="Room" parent="." unique_id=2034690676 instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042173862, 0.0016694069, -0.0031263828)
+
+[node name="Player" parent="." unique_id=1001879558 instance=ExtResource("2_uu6xs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=38545475]
+transform = Transform3D(-0.17364821, 0.41619778, -0.89253896, 0, 0.9063078, 0.4226183, 0.9848078, 0.07338691, -0.15737873, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_split_1 = 0.055
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1001331435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+omni_range = 3.5

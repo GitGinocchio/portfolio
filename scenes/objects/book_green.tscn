@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://l5pscmjboqt"]
+
+[ext_resource type="PackedScene" uid="uid://cc3t0cl0xd1be" path="res://assets/LowPolyBookGreen.fbx" id="1_3son1"]
+
+[node name="BookGreen" unique_id=986877455 instance=ExtResource("1_3son1")]
+
+[node name="Cube_010" parent="." index="0" unique_id=148863342]
+transform = Transform3D(100, 1.5632411e-12, 6.833143e-20, 0, -4.3711384e-06, 99.99999, 1.5632412e-12, -99.99999, -4.3711384e-06, 0, 0, 0)

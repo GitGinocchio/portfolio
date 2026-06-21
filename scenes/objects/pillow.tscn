@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://6vhn78avacs7"]
+
+[ext_resource type="PackedScene" uid="uid://mxef33dyvwd7" path="res://assets/LowPolyPillow.fbx" id="1_wr6ue"]
+
+[node name="Pillow" unique_id=1914435222 instance=ExtResource("1_wr6ue")]
+
+[node name="Cube_004" parent="." index="0" unique_id=609623854]
+transform = Transform3D(100, 4.3711393e-06, 1.9106857e-13, 0, -4.371139e-06, 100, 4.3711393e-06, -100, -4.371139e-06, 0, 0, 0)

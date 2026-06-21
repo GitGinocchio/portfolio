@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://kk5f6wacsxi"]
+
+[ext_resource type="PackedScene" uid="uid://ugv50g4wfran" path="res://assets/LowPolyFloor.fbx" id="1_ukw5w"]
+
+[node name="Floor" unique_id=599588203 instance=ExtResource("1_ukw5w")]

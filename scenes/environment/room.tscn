@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://cttq2mvf6algu"]
+
+[ext_resource type="PackedScene" uid="uid://kk5f6wacsxi" path="res://scenes/environment/floor.tscn" id="2_ffxv4"]
+[ext_resource type="PackedScene" uid="uid://dvgfetxlj7c2t" path="res://scenes/environment/wall.tscn" id="3_14vil"]
+[ext_resource type="PackedScene" uid="uid://5isk12iy07bd" path="res://scenes/environment/wall_windowed.tscn" id="4_jxe34"]
+[ext_resource type="PackedScene" uid="uid://b73orhja8hit2" path="res://scenes/environment/ground.tscn" id="4_katsu"]
+[ext_resource type="PackedScene" uid="uid://dst1gwmp8i8ot" path="res://scenes/objects/bed.tscn" id="6_jn645"]
+[ext_resource type="PackedScene" uid="uid://do8t0xk32jrge" path="res://scenes/objects/desk.tscn" id="7_qvc4m"]
+[ext_resource type="PackedScene" uid="uid://dg0twnngwxnrn" path="res://scenes/objects/chair.tscn" id="8_7dqbv"]
+[ext_resource type="PackedScene" uid="uid://dtxl8lqtw6sbg" path="res://scenes/objects/book_yellow.tscn" id="9_katsu"]
+[ext_resource type="PackedScene" uid="uid://p3erdda1cht7" path="res://scenes/objects/trashbin.tscn" id="9_ybpoa"]
+[ext_resource type="PackedScene" uid="uid://b7o60iq1080u7" path="res://scenes/objects/garbage.tscn" id="10_qtoah"]
+[ext_resource type="PackedScene" uid="uid://doefofjpmo6v3" path="res://scenes/objects/computer_case.tscn" id="11_eom3m"]
+[ext_resource type="PackedScene" uid="uid://bocux7ql5ecl2" path="res://scenes/objects/monitor.tscn" id="12_tk5fv"]
+[ext_resource type="PackedScene" uid="uid://cxviknuum1mw1" path="res://scenes/objects/keyboard.tscn" id="13_w68ji"]
+[ext_resource type="PackedScene" uid="uid://bmc3vww3lobl" path="res://scenes/objects/mouse.tscn" id="14_23wr2"]
+[ext_resource type="PackedScene" uid="uid://syyygu782lwe" path="res://scenes/objects/shelf.tscn" id="15_3j2fx"]
+[ext_resource type="PackedScene" uid="uid://b5ceblp0lo4jc" path="res://scenes/objects/book_red.tscn" id="15_dynfe"]
+[ext_resource type="PackedScene" uid="uid://6vhn78avacs7" path="res://scenes/objects/pillow.tscn" id="16_dynfe"]
+[ext_resource type="PackedScene" uid="uid://l5pscmjboqt" path="res://scenes/objects/book_green.tscn" id="17_vfrn5"]
+[ext_resource type="PackedScene" uid="uid://bbtm5l4orer1k" path="res://scenes/objects/book_purple.tscn" id="19_jxwrd"]
+
+[node name="Room" type="Node3D" unique_id=2034690676]
+
+[node name="Floor" type="Node3D" parent="." unique_id=712993443]
+
+[node name="Floor1" parent="Floor" unique_id=599588203 instance=ExtResource("2_ffxv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.08, -1)
+
+[node name="Floor2" parent="Floor" unique_id=1277916654 instance=ExtResource("2_ffxv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.08, -1)
+
+[node name="Floor3" parent="Floor" unique_id=787758583 instance=ExtResource("2_ffxv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.08, 1)
+
+[node name="Floor4" parent="Floor" unique_id=112136981 instance=ExtResource("2_ffxv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.08, 1)
+
+[node name="Ground" type="Node3D" parent="." unique_id=923065451]
+
+[node name="Ground1" parent="Ground" unique_id=310890425 instance=ExtResource("4_katsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="Ground2" parent="Ground" unique_id=1092653946 instance=ExtResource("4_katsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="Ground3" parent="Ground" unique_id=101191223 instance=ExtResource("4_katsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+
+[node name="Ground4" parent="Ground" unique_id=1933161340 instance=ExtResource("4_katsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Walls" type="Node3D" parent="." unique_id=1001025753]
+
+[node name="WallWindowed" parent="Walls" unique_id=1841894694 instance=ExtResource("4_jxe34")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1, -1)
+
+[node name="LowPolyWall1" parent="Walls" unique_id=793729751 instance=ExtResource("3_14vil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2)
+
+[node name="LowPolyWall2" parent="Walls" unique_id=939194756 instance=ExtResource("3_14vil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -2)
+
+[node name="LowPolyWall3" parent="Walls" unique_id=776644666 instance=ExtResource("3_14vil")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 1, 1)
+
+[node name="BedArea" type="Node3D" parent="." unique_id=2138451299]
+
+[node name="Pillow" parent="BedArea" unique_id=1914435222 instance=ExtResource("16_dynfe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3071579, 0.5875367, -1.4087353)
+
+[node name="Bed" parent="BedArea" unique_id=1283486119 instance=ExtResource("6_jn645")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3000001, 0.35, -1.05)
+
+[node name="Shelf" parent="BedArea" unique_id=1105566602 instance=ExtResource("15_3j2fx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.2500001, 1.3000001, -1.8100001)
+
+[node name="DeskArea" type="Node3D" parent="." unique_id=482282269]
+
+[node name="Desk" parent="DeskArea" unique_id=809219576 instance=ExtResource("7_qvc4m")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0.48, -1.5500001)
+
+[node name="Chair" parent="DeskArea" unique_id=379582502 instance=ExtResource("8_7dqbv")]
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, 0.85192436, 0.3350001, -1.0500002)
+
+[node name="Keyboard" parent="DeskArea" unique_id=896231947 instance=ExtResource("13_w68ji")]
+transform = Transform3D(-0.17364818, 0, -0.9848076, 0, 1, 0, 0.9848076, 0, -0.17364818, 0.59999996, 0.77724975, -1.5)
+
+[node name="Monitor" parent="DeskArea" unique_id=1621209697 instance=ExtResource("12_tk5fv")]
+transform = Transform3D(0.052335974, 0, -0.9986295, 0, 1, 0, 0.9986295, 0, 0.052335974, 0.65, 0.90000004, -1.7000002)
+
+[node name="Mouse" parent="DeskArea" unique_id=1867869848 instance=ExtResource("14_23wr2")]
+transform = Transform3D(0.90630776, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.90630776, 0.88955104, 0.7572499, -1.5013818)
+
+[node name="Books" type="Node3D" parent="DeskArea" unique_id=784500797]
+
+[node name="BookRed" parent="DeskArea/Books" unique_id=1588129732 instance=ExtResource("15_dynfe")]
+transform = Transform3D(-0.06469342, 0.2348681, 0.969872, 0.96409535, 0.265556, 1.4901161e-08, -0.25755537, 0.93504906, -0.243615, 1.0592914, 0.77946025, -1.7173506)
+
+[node name="BookYellow" parent="DeskArea/Books" unique_id=839681626 instance=ExtResource("9_katsu")]
+transform = Transform3D(-4.132993e-08, -0.94551855, 0.32556814, 1, -4.371139e-08, 0, 1.4231035e-08, 0.32556814, 0.94551855, 1.1500001, 0.76219994, -1.604296)
+
+[node name="BookGreen" parent="DeskArea/Books" unique_id=986877455 instance=ExtResource("17_vfrn5")]
+transform = Transform3D(0.25881907, -0.9659258, 0, 0.9659258, 0.25881907, 0, 0, 0, 1, 1.2646096, 0.78110886, -1.6000066)
+
+[node name="ComputerCase" parent="DeskArea" unique_id=36575166 instance=ExtResource("11_eom3m")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 0.237, -1.65)
+
+[node name="Shelf" parent="DeskArea" unique_id=1598169515 instance=ExtResource("15_3j2fx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.85, 1.3000001, -1.8100001)
+
+[node name="BookGreen2" parent="DeskArea/Shelf" unique_id=345658383 instance=ExtResource("17_vfrn5")]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0.011627793, 0.03587365, 0.038159728)
+
+[node name="BookYellow2" parent="DeskArea/Shelf" unique_id=1330747223 instance=ExtResource("9_katsu")]
+transform = Transform3D(0.044504464, -0.25239727, -0.9665997, 0.98480785, 0.17364825, 0, 0.16784836, -0.95191497, 0.25629094, 0.013989806, 0.053737998, 0.1800136)
+
+[node name="BookYellow" parent="DeskArea/Shelf" unique_id=1574754936 instance=ExtResource("9_katsu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.07743847, -0.29758137)
+
+[node name="BookRed" parent="DeskArea/Shelf" unique_id=1717982061 instance=ExtResource("15_dynfe")]
+transform = Transform3D(-4.357059e-08, 3.5056065e-09, -1, 0.08019893, 0.9967789, 0, 0.9967789, -0.08019893, -4.371139e-08, -0.012684226, 0.07743847, -0.25649488)
+
+[node name="BookPurple" parent="DeskArea/Shelf" unique_id=249980531 instance=ExtResource("19_jxwrd")]
+transform = Transform3D(0.12010045, 0, -0.99276173, 0, 1, 0, 0.99276173, 0, 0.12010045, -0.021428585, 0.07743847, -0.20827973)
+
+[node name="BookGreen" parent="DeskArea/Shelf" unique_id=2062086430 instance=ExtResource("17_vfrn5")]
+transform = Transform3D(-4.317323e-08, -6.837968e-09, -1, -0.15643448, 0.98768836, 0, 0.98768836, 0.15643448, -4.371139e-08, -0.008719087, 0.077438354, -0.34710574)
+
+[node name="TrashBinArea" type="Node3D" parent="." unique_id=1134087701]
+
+[node name="Shelf" parent="TrashBinArea" unique_id=979578418 instance=ExtResource("15_3j2fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8100001, 1.3000002, 0.9899999)
+
+[node name="TrashBin" parent="TrashBinArea" unique_id=2127645677 instance=ExtResource("9_ybpoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4788733, 0.17185125, 1.5036136)
+
+[node name="Garbage1" parent="TrashBinArea/TrashBin" unique_id=1898862891 instance=ExtResource("10_qtoah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.043226004, 0.027276367, -0.047097087)
+
+[node name="Garbage2" parent="TrashBinArea/TrashBin" unique_id=553914424 instance=ExtResource("10_qtoah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04985404, 0.050825566, 0.039302707)
+
+[node name="Garbage3" parent="TrashBinArea/TrashBin" unique_id=2058378360 instance=ExtResource("10_qtoah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017629385, -0.013107359, 0.010500193)
+
+[node name="Garbage4" parent="TrashBinArea/TrashBin" unique_id=589875392 instance=ExtResource("10_qtoah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027824402, 0.038931668, -0.046218038)
+
+[node name="Garbage5" parent="TrashBinArea/TrashBin" unique_id=123641252 instance=ExtResource("10_qtoah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046569586, 0.05328867, 0.028617382)

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dg0twnngwxnrn"]
+
+[ext_resource type="PackedScene" uid="uid://bcbuf0cxlrhbl" path="res://assets/LowPolyChair.fbx" id="1_rjlyr"]
+
+[node name="Chair" unique_id=379582502 instance=ExtResource("1_rjlyr")]
+
+[node name="Cube_034" parent="." index="0" unique_id=1254622796]
+transform = Transform3D(100, 4.3711393e-06, 1.9106857e-13, 0, -4.371139e-06, 100, 4.3711393e-06, -100, -4.371139e-06, 0, 0, 0)
