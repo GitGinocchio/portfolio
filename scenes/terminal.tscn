@@ -1,10 +1,18 @@
 [gd_scene format=3 uid="uid://bc76rlg07r842"]
 
+[ext_resource type="Script" uid="uid://b1arhcjuonomp" path="res://scripts/terminal.gd" id="1_m430i"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_h4bas"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Terminal" type="Sprite3D" unique_id=1501954215]
 texture = SubResource("ViewportTexture_h4bas")
+script = ExtResource("1_m430i")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1071193247]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+current = true
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=237809766]
 size = Vector2i(1920, 1080)
