@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dh11c2endaqe8"]
 
-[ext_resource type="Script" uid="uid://bbf5hjpdlr35w" path="res://scripts/blink_cursor.gd" id="1_xssjq"]
+[ext_resource type="Script" uid="uid://bbf5hjpdlr35w" path="res://scripts/terminal/blink_cursor.gd" id="1_xssjq"]
 
 [node name="BlinkCursor" type="ColorRect" unique_id=395323975]
 anchors_preset = 15
