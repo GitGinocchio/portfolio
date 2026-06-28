@@ -25,12 +25,12 @@ func execute(command: String):
 	
 # Commands
 
-func help(args: Array[String]):
+func help(_args: Array[String]):
 	terminal.terminal_println("Here is a list of all available commands:")
 	for cmd in commands.keys():
 		terminal.terminal_println("- "+cmd)
 
-func clear(args: Array[String]):
+func clear(_args: Array[String]):
 	terminal.terminal_clear()
 
 func echo(args: Array[String]):
