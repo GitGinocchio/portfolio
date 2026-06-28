@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dh11c2endaqe8"]
+
+[ext_resource type="Script" uid="uid://bbf5hjpdlr35w" path="res://scripts/blink_cursor.gd" id="1_xssjq"]
+
+[node name="BlinkCursor" type="ColorRect" unique_id=395323975]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+script = ExtResource("1_xssjq")
