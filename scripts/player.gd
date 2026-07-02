@@ -62,7 +62,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction : Vector3 = (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var yaw_rotation : float = neck.global_transform.basis.get_euler().y
+	var camera_basis := Basis.from_euler(Vector3(0, yaw_rotation, 0))
+	var direction : Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
 		velocity.x = direction.x * SPEED

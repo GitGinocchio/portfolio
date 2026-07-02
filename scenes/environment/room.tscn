@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cttq2mvf6algu"]
 
+[ext_resource type="Script" uid="uid://bg85ccei30enn" path="res://scripts/room.gd" id="1_csn1x"]
 [ext_resource type="PackedScene" uid="uid://kk5f6wacsxi" path="res://scenes/environment/floor.tscn" id="2_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://dvgfetxlj7c2t" path="res://scenes/environment/wall.tscn" id="3_14vil"]
 [ext_resource type="PackedScene" uid="uid://5isk12iy07bd" path="res://scenes/environment/wall_windowed.tscn" id="4_jxe34"]
@@ -21,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bbtm5l4orer1k" path="res://scenes/objects/book_purple.tscn" id="19_jxwrd"]
 
 [node name="Room" type="Node3D" unique_id=2034690676]
+script = ExtResource("1_csn1x")
 
 [node name="Floor" type="Node3D" parent="." unique_id=712993443]
 
