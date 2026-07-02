@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cpr4wpc5rofdg"]
 
 [ext_resource type="PackedScene" uid="uid://cttq2mvf6algu" path="res://scenes/environment/room.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://ber5hgmlrubqh" path="res://scripts/main.gd" id="1_r0du0"]
 [ext_resource type="PackedScene" uid="uid://78wl436fbupu" path="res://scenes/player.tscn" id="2_uu6xs"]
 
 [sub_resource type="Animation" id="Animation_r0du0"]
@@ -8,101 +9,155 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:collision_mask")
+tracks/0/path = NodePath("Player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player:axis_lock_linear_y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.65, 0.24, -1.25)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player:position:z")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [-1.25]
-}
-
-[sub_resource type="Animation" id="Animation_uu6xs"]
-resource_name = "start"
-length = 2.5000000000000004
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player:collision_mask")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player:axis_lock_linear_y")
+tracks/1/path = NodePath("Player:position:z")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [-1.25]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player:position:z")
+tracks/2/path = NodePath("Player:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.5),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cm0pq"]
+resource_name = "standup"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.65, 0.24, -1.3), Vector3(0.65, 0.24, -1.3), Vector3(0.65, 0.24, -1.1999999), Vector3(0.54999995, 0.24, -1.15), Vector3(0.44999996, 0.34, -1.1), Vector3(0.39999995, 0.39000002, -1.0500001), Vector3(0.34999993, 0.54, -1.0000001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.7853982, 0), Vector3(0, 1.3089969, 0), Vector3(0, 1.5707963, 0), Vector3(0, 1.7453293, 0), Vector3(0, 1.9198622, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_head_movement"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_player_collision"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uu6xs"]
+resource_name = "start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:position:z")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-1.55, -1.3]
+"values": [-1.6, -1.3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333378, 5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"disable_head_movement"
+}, {
+"args": [],
+"method": &"enable_head_movement"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"disable_player_collision"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r0du0"]
 _data = {
 &"RESET": SubResource("Animation_r0du0"),
+&"standup": SubResource("Animation_cm0pq"),
 &"start": SubResource("Animation_uu6xs")
 }
 
 [node name="Main" type="Node3D" unique_id=1481455819]
+script = ExtResource("1_r0du0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1483928956]
+unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_r0du0")
 autoplay = &"start"
 
@@ -110,7 +165,9 @@ autoplay = &"start"
 
 [node name="Player" parent="." unique_id=1001879558 instance=ExtResource("2_uu6xs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0.24, -1.25)
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0.65, 0.24, -1.25)
+collision_mask = 0
+axis_lock_linear_y = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=38545475]
 transform = Transform3D(-0.17364821, 0.41619778, -0.89253896, 0, 0.9063078, 0.4226183, 0.9848078, 0.07338691, -0.15737873, 0, 0, 0)

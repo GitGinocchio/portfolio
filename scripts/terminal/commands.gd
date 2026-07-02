@@ -45,4 +45,4 @@ func echo(args: Array[String]):
 	terminal.terminal_println(printable)
 	
 func exit(_args: Array[String]):
-	pass
+	GameState.player_stood_up.emit()

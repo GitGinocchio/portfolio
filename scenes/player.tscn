@@ -14,7 +14,6 @@ script = ExtResource("1_3vyb7")
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=490695944]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 current = true
-fov = 80.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=316827123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3515625, 0)
