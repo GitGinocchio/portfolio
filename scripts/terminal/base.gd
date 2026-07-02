@@ -79,7 +79,7 @@ func terminal_println(message: String = ""):
 func command_push(character: String):
 	current_command += character
 	terminal_print(character)
-	
+
 func command_clear():
 	current_command = ""
 

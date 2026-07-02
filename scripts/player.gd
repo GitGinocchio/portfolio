@@ -7,13 +7,6 @@ const MOUSE_SENSITIVITY = 0.003
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		
-	elif what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

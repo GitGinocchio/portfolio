@@ -7,7 +7,8 @@ func _init(terminal_ref: TerminalBase):
 var commands: Dictionary[String, Callable] = {
 	"help" : help,
 	"clear" : clear,
-	"echo" : echo
+	"echo" : echo,
+	"exit" : exit
 }
 
 func execute(command: String):
@@ -42,3 +43,6 @@ func echo(args: Array[String]):
 		printable = printable.substr(1, printable.length() - 2)
 	
 	terminal.terminal_println(printable)
+	
+func exit(_args: Array[String]):
+	pass
