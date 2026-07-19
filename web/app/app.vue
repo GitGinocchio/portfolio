@@ -11,8 +11,8 @@ useHead({
   }
 })
 
-const title = 'Nuxt Starter Template'
-const description = 'A production-ready starter template powered by Nuxt UI. Build beautiful, accessible, and performant applications in minutes, not hours.'
+const title = 'Giulio Tognetto - Portfolio'
+const description = 'Interactive 3D portfolio of Giulio Tognetto, Full-Stack Developer. Explore my projects in Rust, Vue.js, and Cloudflare Workers via a virtual terminal environment.'
 
 useSeoMeta({
   title,

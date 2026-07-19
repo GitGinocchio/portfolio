@@ -1,4 +1,4 @@
-// composables/useGodot.js
+
 export const useGodot = () => {
   const loadGodot = async (config: any) => {
     return new Promise((resolve, reject) => {
