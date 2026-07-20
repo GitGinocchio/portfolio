@@ -4,7 +4,7 @@ export const useGodot = () => {
     return new Promise((resolve, reject) => {
       // Carica l'engine globalmente
       const script = document.createElement('script');
-      script.src = '/godot/index.js';
+      script.src = '/index.js';
       script.async = true;
 
       script.onload = () => {

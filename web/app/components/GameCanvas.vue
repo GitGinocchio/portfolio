@@ -17,7 +17,7 @@ const { bootLogs, updateProgress } = useBootLogger();
 const { loadGodot } = useGodot();
 
 onMounted(async () => {
-  const response = await fetch('/game-meta.json');
+  const response = await fetch('/game-config.json');
   const GODOT_CONFIG = await response.json();
   const engine = await loadGodot(GODOT_CONFIG);
 
