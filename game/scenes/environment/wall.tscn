@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://dvgfetxlj7c2t"]
-
-[ext_resource type="PackedScene" uid="uid://cw8ax675a5ri6" path="res://assets/LowPolyWall.fbx" id="1_y1upl"]
-
-[node name="LowPolyWall" unique_id=793729751 instance=ExtResource("1_y1upl")]
-
-[node name="Cube_001" parent="." index="0" unique_id=1386704090]
-transform = Transform3D(100, 1.5632412e-12, 6.833144e-20, 0, -4.371139e-06, 100, 1.5632412e-12, -100, -4.371139e-06, 0, 0, 0)

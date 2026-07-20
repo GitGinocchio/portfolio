@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bbtm5l4orer1k"]
-
-[ext_resource type="PackedScene" uid="uid://bnikwyirtjs74" path="res://assets/LowPolyBookPurple.fbx" id="1_idfc1"]
-
-[node name="BookPurple" unique_id=249980531 instance=ExtResource("1_idfc1")]

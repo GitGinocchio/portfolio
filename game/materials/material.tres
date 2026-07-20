@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://barqgjgfeupw2"]
-
-[ext_resource type="Texture2D" uid="uid://df0c5tcp5ugqp" path="res://materials/UVLowPolyRoom.png" id="1_pq4de"]
-
-[resource]
-resource_name = "Material.028"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_pq4de")
-emission_enabled = true

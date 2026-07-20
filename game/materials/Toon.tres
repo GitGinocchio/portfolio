@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://u6n6n53p2nrl"]
-
-[resource]
-resource_name = "Toon"
-vertex_color_use_as_albedo = true
-emission_enabled = true

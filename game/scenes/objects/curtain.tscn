@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cn1h67jle6001"]
-
-[ext_resource type="PackedScene" uid="uid://bbyfff27jqgum" path="res://assets/LowPolyCurtain.fbx" id="1_o4mi8"]
-
-[node name="LowPolyCurtain" unique_id=1677595663 instance=ExtResource("1_o4mi8")]

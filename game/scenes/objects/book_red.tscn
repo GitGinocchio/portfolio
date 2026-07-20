@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://b5ceblp0lo4jc"]
-
-[ext_resource type="PackedScene" uid="uid://bcosjrwr2yk8b" path="res://assets/LowPolyBookRed.fbx" id="1_ppwo8"]
-
-[node name="BookRed" unique_id=1588129732 instance=ExtResource("1_ppwo8")]

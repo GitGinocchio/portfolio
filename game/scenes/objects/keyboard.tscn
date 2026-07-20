@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://cxviknuum1mw1"]
-
-[ext_resource type="PackedScene" uid="uid://d4k26vy6uv4xb" path="res://assets/LowPolyKeyboard.fbx" id="1_5y18c"]
-
-[node name="Keyboard" unique_id=896231947 instance=ExtResource("1_5y18c")]

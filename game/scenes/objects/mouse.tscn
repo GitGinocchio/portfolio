@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://bmc3vww3lobl"]
-
-[ext_resource type="PackedScene" uid="uid://dvkt3yx7hs6pj" path="res://assets/LowPolyMouse.fbx" id="1_ulity"]
-
-[node name="Mouse" unique_id=1867869848 instance=ExtResource("1_ulity")]

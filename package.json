@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "build:game": "./build-godot.bat",
-    "build:site": "cd web && bun run build",
-    "build": "npm run build:game && npm run build:site",
-    "dev" : "cd web && bun run dev"
-  }
-}

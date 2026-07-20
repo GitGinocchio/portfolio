@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://do8t0xk32jrge"]
-
-[ext_resource type="PackedScene" uid="uid://cot8fiamoysy3" path="res://assets/LowPolyDesk.fbx" id="1_yama4"]
-
-[node name="Desk" unique_id=809219576 instance=ExtResource("1_yama4")]
-
-[node name="Cube_019" parent="." index="0" unique_id=170502805]
-transform = Transform3D(100, 1.5632411e-12, 6.833143e-20, 0, -4.3711384e-06, 99.99999, 1.5632412e-12, -99.99999, -4.3711384e-06, 0, 0, 0)

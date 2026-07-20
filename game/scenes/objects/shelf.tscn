@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://syyygu782lwe"]
-
-[ext_resource type="PackedScene" uid="uid://jde1mk0jw2ey" path="res://assets/LowPolyShelf.fbx" id="1_ov3r1"]
-
-[node name="Shelf" unique_id=1598169515 instance=ExtResource("1_ov3r1")]
-
-[node name="Cube_022" parent="." index="0" unique_id=1641995854]
-transform = Transform3D(100, 4.3711393e-06, 1.9106857e-13, 0, -4.371139e-06, 100, 4.3711393e-06, -100, -4.371139e-06, 0, 0, 0)

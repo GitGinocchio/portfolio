@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://p3erdda1cht7"]
-
-[ext_resource type="PackedScene" uid="uid://dak23aoqgjh3t" path="res://assets/LowPolyTrash.fbx" id="1_rbiu1"]
-
-[node name="TrashBin" unique_id=2127645677 instance=ExtResource("1_rbiu1")]
-
-[node name="Cube_007" parent="." index="0" unique_id=2074789585]
-transform = Transform3D(100, 1.5632411e-12, 6.833143e-20, 0, -4.3711384e-06, 99.99999, 1.5632412e-12, -99.99999, -4.3711384e-06, 0, 0, 0)
