@@ -1,5 +1,9 @@
 Un mondo molto semplice con un terreno digitale molto semplice e infinito
 
+Oppure sarebbe piu' figo un mondo naturale con questi assets:
+https://quaternius.com/packs/stylizednaturemegakit.html
+https://quaternius.com/packs/ultimateanimatedanimals.html
+
 con delle aree che rompono questa semplicita' in cui potrebbero esserci cose tipo:
 - Un personaggio di lego enorme che si puo' smontare, montare, spostare e/o pezzi di lego con il quale e' possibile creare qualcosa
 - Aggiungere camera mia e renderla esplorabile
