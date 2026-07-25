@@ -1,45 +1,53 @@
 <template>
-  <section class="min-h-screen bg-slate-950 text-white flex items-center justify-center relative overflow-hidden px-6 lg:px-20">
-    <!-- Glow Background Effects -->
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/30 rounded-full blur-[128px] pointer-events-none"></div>
-    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-blue-600/20 rounded-full blur-[128px] pointer-events-none"></div>
+  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 flex items-center justify-center relative overflow-hidden transition-colors duration-300">
+    
+    <!-- Background Glow Effects -->
+    <div class="absolute -top-40 -left-40 w-500px h-500px bg-primary-400/20 dark:bg-primary-600/20 rounded-full blur-[128px] pointer-events-none"></div>
+    <div class="absolute -bottom-40 -right-40 w-500px h-500px bg-secondary-400/20 dark:bg-secondary-600/20 rounded-full blur-[128px] pointer-events-none"></div>
 
-    <div class="max-w-7xl w-full h-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
-      
-      <!-- Testo a sinistra -->
-      <div class="flex flex-col items-start gap-4">
-        <span class="px-3 py-1 text-xs font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full">
+    <!-- Contenitore Principale -->
+    <div class="max-w-7xl mx-auto w-full h-[85vh] relative flex items-center justify-center px-6 lg:px-8">
+
+      <!-- 1. LIVELLO SFONDO (z-0): Testo Titolo a SINISTRA -->
+      <div class="absolute top-1/4 -translate-y-12 left-6 lg:left-8 right-6 lg:right-8 flex flex-col items-start text-left z-0 select-none pointer-events-none">
+        <span class="px-3 py-1 text-xs font-mono bg-primary-500/10 text-primary-600 dark:text-primary-300 border border-primary-500/20 rounded-full mb-3">
           Portfolio
         </span>
-        <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-gray-900 dark:text-white opacity-90 leading-none">
           Giulio Tognetto
         </h1>
-        <h2 class="text-2xl lg:text-3xl font-semibold bg-linear-to-r from-indigo-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold bg-linear-to-r from-primary-500 via-primary-400 to-secondary-500 bg-clip-text text-transparent mt-2">
           Software Developer
         </h2>
-        <p class="text-slate-400 text-lg max-w-lg mt-2 leading-relaxed">
-          Sviluppo soluzioni software full-stack, architetture cloud performanti ed esperienze digitali interattive.
-        </p>
+      </div>
 
-        <!-- Buttons -->
-        <div class="flex items-center gap-4 mt-6">
-          <a href="#projects" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 font-medium rounded-xl transition duration-200 shadow-lg shadow-indigo-600/30">
-            Guarda i Progetti
-          </a>
-          <a href="#contact" class="px-6 py-3 border border-slate-700 hover:border-slate-500 font-medium rounded-xl transition duration-200 bg-slate-900/50">
-            Contattami
-          </a>
+      <!-- 2. LIVELLO CENTRALE (z-10): Modello 3D Centrato Verticalmente a DESTRA -->
+      <div class="w-full h-full flex items-center justify-end z-10 pointer-events-auto">
+        <div class="w-full lg:w-1/2 h-full flex items-center justify-center">
+          <ClientOnly>
+            <Viewer>
+              <Scene>
+                <Camera active :look-at="[0, 2, -5]" :position="[0, 2, 5]" />
+                <Model 
+                  path="/models/lego.glb"
+                  :position="[1, 0, 0]"
+                  :scale="2.7" 
+                  animation="Idle" 
+                  @anim-loop="(animation) => console.log(animation)" 
+                />
+              </Scene>
+            </Viewer>
+          </ClientOnly>
         </div>
       </div>
 
-      <!-- Canvas 3D tramite il nuovo componente -->
-      <div class="w-full h-1000px">
-        <ModelViewer model-path="/models/lego.glb" :scale="2.5" />
-      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import ModelViewer from '~/components/ModelViewer.vue'
+import Viewer from './3d/Viewer.vue';
+import Scene from './3d/Scene.vue';
+import Model from './3d/Model.vue';
+import Camera from './3d/Camera.vue';
 </script>

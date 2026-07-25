@@ -66,7 +66,7 @@ let camera: THREE.PerspectiveCamera
 let renderer: THREE.WebGLRenderer
 let mixer: THREE.AnimationMixer | undefined
 let currentModel: THREE.Group | THREE.Object3D | null = null
-let clock: THREE.Clock
+let clock: THREE.Timer
 let controls: OrbitControls
 let animationFrameId: number
 
@@ -102,7 +102,7 @@ function initThree(): boolean {
   const height = container.clientHeight || 300
 
   scene = new THREE.Scene()
-  clock = new THREE.Clock()
+  clock = new THREE.Timer();
 
   camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
   camera.position.set(0, 1.5, 4.5)
@@ -119,7 +119,7 @@ function initThree(): boolean {
 
   controls = new OrbitControls(camera, canvasEl)
   controls.enableDamping = true
-  controls.enableZoom = props.enableZoom
+  controls.enableZoom = false
   controls.maxPolarAngle = Math.PI / 2
 
   // Luci

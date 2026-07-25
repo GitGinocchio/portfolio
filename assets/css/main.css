@@ -2,6 +2,8 @@
 @import "@nuxt/ui";
 
 @theme {
+  --font-sans: 'Pretendard Std Variable', sans-serif;
+
   /* --- PALETTE PRIMARY (Accento arancione caldo) --- */
   --color-primary-50: #fdf9f5;
   --color-primary-100: #fbeee1;
