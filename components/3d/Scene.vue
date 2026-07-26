@@ -5,15 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-import { shallowRef, inject, provide, onMounted, onBeforeUnmount, watch, type Ref } from 'vue'
+import { shallowRef, inject, provide, onMounted, onBeforeUnmount, watch, type Ref, type ShallowRef } from 'vue'
 import { Scene, Camera } from 'three'
 
-const props = withDefaults(
-  defineProps<{
-    active?: boolean
-  }>(),
-  { active: true }
-)
+const props = withDefaults(defineProps<{ active?: boolean }>(), { active: true })
 
 const viewerContext = inject<{
   activeScene: Ref<Scene | null>
@@ -23,13 +18,12 @@ const viewerContext = inject<{
 const scene = new Scene()
 const activeCamera = shallowRef<Camera | null>(null)
 
-provide('threeScene', scene)
-provide('threeActiveCamera', activeCamera)
+provide('sceneContext', { scene, activeCamera })
 
 const syncWithViewer = () => {
   if (!viewerContext) return
 
-  if (props.active) {
+  if (props.active && viewerContext.activeScene) {
     viewerContext.activeScene.value = scene
     if (activeCamera.value) {
       viewerContext.activeCamera.value = activeCamera.value

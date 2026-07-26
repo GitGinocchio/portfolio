@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import { shallowRef, inject, watch, onMounted, onBeforeUnmount, type Ref } from 'vue'
-import { PerspectiveCamera, Camera } from 'three'
+import { shallowRef, inject, watch, onMounted, onBeforeUnmount, type Ref, type ShallowRef } from 'vue'
+import { PerspectiveCamera, type Camera } from 'three'
 
 const props = withDefaults(
   defineProps<{
@@ -27,7 +27,13 @@ const props = withDefaults(
   }
 )
 
-const activeCameraRef = inject<Ref<Camera | null> | null>('threeActiveCamera', null)
+const context = inject<{
+  activeCamera: ShallowRef<Camera | null>
+  viewportSize: {
+    width: Ref<number>
+    height: Ref<number>
+  }
+}>('viewerContext')
 
 const camera = shallowRef(new PerspectiveCamera(props.fov, 1, props.near, props.far))
 
@@ -38,16 +44,23 @@ const updateCamera = () => {
   cam.far = props.far
   cam.position.set(...props.position)
   cam.lookAt(...props.lookAt)
-  cam.updateProjectionMatrix()
+
+  const width = context?.viewportSize.width.value || 0
+  const height = context?.viewportSize.height.value || 0
+
+  if (width > 0 && height > 0) {
+    cam.aspect = width / height
+    cam.updateProjectionMatrix()
+  }
 }
 
 const syncActiveState = () => {
-  if (!activeCameraRef) return
+  if (!context) return
 
   if (props.active) {
-    activeCameraRef.value = camera.value
-  } else if (activeCameraRef.value === camera.value) {
-    activeCameraRef.value = null
+    context.activeCamera.value = camera.value
+  } else if (context.activeCamera.value === camera.value) {
+    context.activeCamera.value = null
   }
 }
 
@@ -62,11 +75,16 @@ watch(
   { deep: true }
 )
 
+watch(
+  () => [context?.viewportSize.width.value, context?.viewportSize.height.value],
+  updateCamera
+)
+
 watch(() => props.active, syncActiveState)
 
 onBeforeUnmount(() => {
-  if (activeCameraRef && activeCameraRef.value === camera.value) {
-    activeCameraRef.value = null
+  if (context?.activeCamera.value === camera.value) {
+    context.activeCamera.value = null
   }
 })
 </script>

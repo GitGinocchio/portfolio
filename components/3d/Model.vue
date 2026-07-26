@@ -5,9 +5,11 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, shallowRef, inject, watch, onMounted, onBeforeUnmount } from 'vue'
-import { Timer, Scene, AnimationClip, AnimationAction, AnimationMixer } from 'three'
+import { ref, shallowRef, inject, watch, onMounted, onBeforeUnmount, type ShallowRef } from 'vue'
+import { Timer, Scene, Camera, AnimationClip, AnimationAction, AnimationMixer } from 'three'
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
+
+const sceneContext = inject<{ scene: Scene, activeCamera: ShallowRef<Camera | null> } | null>('sceneContext', null)
 
 const props = withDefaults(
   defineProps<{
@@ -34,8 +36,7 @@ const emit = defineEmits<{
   (e: 'anim-change', payload: { from: string | null; to: string }): void
 }>()
 
-const parentScene = inject<Scene | null>('threeScene', null)
-const { loadModel, clearModel } = useModelLoader()
+const { loadModel, releaseModel } = useModelLoader()
 const model = shallowRef<GLTF | null>(null)
 
 // --- Gestione Animazioni ---
@@ -142,8 +143,8 @@ const initModel = async () => {
       updateAnimation()
     }
 
-    if (parentScene && !parentScene.children.includes(gltf.scene)) {
-      parentScene.add(gltf.scene)
+    if (sceneContext?.scene && !sceneContext.scene.children.includes(gltf.scene)) {
+      sceneContext.scene.add(gltf.scene)
     }
 
     emit('load', gltf)
@@ -164,12 +165,12 @@ const cleanupModel = () => {
     mixer = null
   }
 
-  if (model.value?.scene && parentScene) {
-    parentScene.remove(model.value.scene)
+  if (model.value?.scene && sceneContext?.scene) {
+    sceneContext.scene.remove(model.value.scene)
   }
 
-  if (props.path) {
-    clearModel(props.path)
+  if (props.path && model.value?.scene) {
+    releaseModel(props.path, model.value?.scene)
   }
 
   model.value = null
