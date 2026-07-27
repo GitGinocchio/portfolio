@@ -21,6 +21,25 @@ const renderer = shallowRef<WebGLRenderer | null>(null)
 const containerWidth = ref(0)
 const containerHeight = ref(0)
 
+const updateCallbacks = new Set<(delta: number) => void>()
+const resizeCallbacks = new Set<(width: number, height: number) => void>()
+
+const registerUpdate = (fn: (delta: number) => void) => {
+  updateCallbacks.add(fn)
+}
+
+const unregisterUpdate = (fn: (delta: number) => void) => {
+  updateCallbacks.delete(fn)
+}
+
+const registerResize = (fn: (width: number, height: number) => void) => {
+  resizeCallbacks.add(fn)
+}
+
+const unregisterResize = (fn: (width: number, height: number) => void) => {
+  resizeCallbacks.delete(fn)
+}
+
 provide('viewerContext', { 
   activeScene, 
   activeCamera, 
@@ -28,7 +47,11 @@ provide('viewerContext', {
   viewportSize: { 
     width: containerWidth, 
     height: containerHeight 
-  } 
+  },
+  registerUpdate, 
+  unregisterUpdate,
+  registerResize,
+  unregisterResize
 })
 
 let resizeObserver: ResizeObserver | null = null
@@ -49,27 +72,28 @@ onMounted(() => {
 
   handleResize()
 
-  const animate = () => {
-    animationFrameId = requestAnimationFrame(animate)
-    const currentScene = activeScene.value || defaultScene
-    const currentCamera = activeCamera.value || defaultCamera
-
-
-    renderer.value?.render(currentScene, currentCamera)
-  }
-
-  resizeObserver = new ResizeObserver(() => {
-    handleResize()
-  })
+  resizeObserver = new ResizeObserver(() => handleResize())
   resizeObserver.observe(containerRef.value)
 
-  animate()
+  handleUpdate(1)
 })
 
-const handleResize = () => {
+async function handleUpdate(delta: number) {
+  animationFrameId = requestAnimationFrame(handleUpdate)
+  const currentScene = activeScene.value || defaultScene
+  const currentCamera = activeCamera.value || defaultCamera
+
+  updateCallbacks.forEach((cb) => cb(delta))
+
+  renderer.value?.render(currentScene, currentCamera)
+}
+
+async function handleResize()  {
   if (!containerRef.value) return
   containerWidth.value = containerRef.value.clientWidth
   containerHeight.value = containerRef.value.clientHeight
+
+  resizeCallbacks.forEach((cb) => cb(containerWidth.value, containerHeight.value))
 
   renderer.value?.setSize(containerWidth.value, containerHeight.value, false)
 }

@@ -2,8 +2,8 @@
   <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center">
     
     <!-- Background Glow Effects -->
-    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-400/20 dark:bg-primary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
-    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-400/20 dark:bg-secondary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
+    <div class="absolute -top-40 -left-40 w-500px h-500px bg-primary-400/20 dark:bg-primary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
+    <div class="absolute -bottom-40 -right-40 w-500px h-500px bg-secondary-400/20 dark:bg-secondary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
 
     <!-- 1. CANVAS 3D (Nella metà destra su Desktop) -->
     <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full lg:h-full z-0 pointer-events-auto">
@@ -21,6 +21,7 @@
               :max-polar-angle="Math.PI / 1.5" 
               :min-polar-angle="Math.PI / 4"
               :idle-timeout="2000"
+              :reset-speed="0.05"
             />
             <Model 
               path="/models/lego.glb"

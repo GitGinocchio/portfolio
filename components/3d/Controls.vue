@@ -22,14 +22,13 @@ const props = withDefaults(
     target: () => [0, -0.2, 0],
     enableZoom: false,
     enableDamping: true,
-    maxPolarAngle: -Math.PI,
-    minPolarAngle: Math.PI,
+    maxPolarAngle: Math.PI,
+    minPolarAngle: 0,
     idleTimeout: 3000,
     resetSpeed: 0.05
   }
 )
 
-// Usa sceneContext se ti sei allineato a quell'injection key o mantieni viewerContext
 const context = inject<{
   scene?: Scene
   activeCamera: ShallowRef<Camera | null>
@@ -45,12 +44,14 @@ const initialTarget = new Vector3(...props.target)
 
 const resetIdleTimer = () => {
   isResetting.value = false
-  
+
   if (idleTimer) clearTimeout(idleTimer)
-  
-  idleTimer = setTimeout(() => {
-    isResetting.value = true
-  }, props.idleTimeout)
+
+  if (props.idleTimeout > 0) {
+    idleTimer = setTimeout(() => {
+      isResetting.value = true
+    }, props.idleTimeout)
+  }
 }
 
 const cleanupControls = () => {
@@ -59,6 +60,20 @@ const cleanupControls = () => {
     controls.removeEventListener('start', resetIdleTimer)
     controls.dispose()
     controls = null
+  }
+}
+
+const applyPropsToControls = () => {
+  if (!controls) return
+
+  controls.enableZoom = props.enableZoom
+  controls.enableDamping = props.enableDamping
+  controls.maxPolarAngle = props.maxPolarAngle
+  controls.minPolarAngle = props.minPolarAngle
+
+  initialTarget.set(...props.target)
+  if (!isResetting.value) {
+    controls.target.set(...props.target)
   }
 }
 
@@ -73,11 +88,7 @@ const initControls = () => {
   initialCameraPosition.copy(camera.position)
 
   controls = new OrbitControls(camera, domElement)
-  controls.target.set(...props.target)
-  controls.enableZoom = props.enableZoom
-  controls.enableDamping = props.enableDamping
-  controls.maxPolarAngle = props.maxPolarAngle
-  controls.minPolarAngle = props.minPolarAngle
+  applyPropsToControls()
 
   controls.addEventListener('start', resetIdleTimer)
   controls.addEventListener('change', () => {
@@ -87,7 +98,8 @@ const initControls = () => {
   resetIdleTimer()
 }
 
-const update = () => {
+
+useUpdate((delta) => {
   if (!controls || !context?.activeCamera.value) return
 
   if (isResetting.value) {
@@ -95,35 +107,44 @@ const update = () => {
 
     camera.position.lerp(initialCameraPosition, props.resetSpeed)
     controls.target.lerp(initialTarget, props.resetSpeed)
-    
-    controls.update()
+
+    controls.update(delta)
 
     if (
-      camera.position.distanceTo(initialCameraPosition) < 0.01 &&
-      controls.target.distanceTo(initialTarget) < 0.01
+      camera.position.distanceTo(initialCameraPosition) < 0.001 &&
+      controls.target.distanceTo(initialTarget) < 0.001
     ) {
       camera.position.copy(initialCameraPosition)
       controls.target.copy(initialTarget)
       isResetting.value = false
     }
   } else {
-    controls.update()
+    controls.update(delta)
   }
-}
+})
 
-defineExpose({ update })
-
-// Watcher reattivo: tenta l'inizializzazione ogni volta che la fotocamera o il renderer diventano disponibili/cambiano
 watch(
-  () => [context?.activeCamera.value, context?.renderer?.value] as const,
-  ([camera, renderer]) => {
-    if (camera && renderer) {
+  () => [context?.activeCamera.value, context?.renderer?.value?.domElement] as const,
+  ([camera, domElement]) => {
+    if (camera && domElement) {
       initControls()
     } else {
       cleanupControls()
     }
   },
   { immediate: true }
+)
+
+watch(
+  () => [
+    props.enableZoom,
+    props.enableDamping,
+    props.maxPolarAngle,
+    props.minPolarAngle,
+    props.target
+  ],
+  applyPropsToControls,
+  { deep: true }
 )
 
 onBeforeUnmount(() => {
