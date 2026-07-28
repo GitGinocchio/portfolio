@@ -60,6 +60,10 @@ let animationFrameId: number
 const defaultScene = new Scene()
 const defaultCamera = new Camera()
 
+const emit = defineEmits<{
+  (e: 'update', delta: number): void
+}>()
+
 onMounted(() => {
   if (!canvasRef.value || !containerRef.value) return
 
@@ -84,6 +88,8 @@ async function handleUpdate(delta: number) {
   const currentCamera = activeCamera.value || defaultCamera
 
   updateCallbacks.forEach((cb) => cb(delta))
+
+  emit("update", delta)
 
   renderer.value?.render(currentScene, currentCamera)
 }
