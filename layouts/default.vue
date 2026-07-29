@@ -1,5 +1,8 @@
 <template>
   <UHeader title="Il mio sito">
+    <template #title>
+      <Logo />
+    </template>
     <template #right>
       <UColorModeButton />
     </template>

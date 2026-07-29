@@ -38,7 +38,7 @@
 import Hero from '~/components/Hero.vue'
 
 useHead({
-  title: 'Giulio Tognetto — Software Developer',
+  title: 'Giulio Tognetto - Portfolio',
   meta: [
     { name: 'description', content: 'Portfolio di Giulio Tognetto, Sviluppatore Full-Stack specializzato in architetture ad alte prestazioni, Rust, Vue/Nuxt e soluzioni 3D.' }
   ]
