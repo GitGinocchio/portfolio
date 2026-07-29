@@ -9,9 +9,8 @@
     <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full lg:h-full z-0 pointer-events-auto">
       <ClientOnly>
         <Viewer>
-          <Scene>
-            <Camera 
-              active 
+          <Scene @update="(delta) => onSceneUpdate(delta)">
+            <Camera  
               :look-at="[0, -0.2, 0]" 
               :position="[0, 1.2, 5.5]" 
             />
@@ -23,12 +22,14 @@
               :idle-timeout="2000"
               :reset-speed="0.05"
             />
-            <Model 
+            <Model
               path="/models/lego.glb"
-              :position="[0, -2.5, 0]" 
-              :scale="2.7" 
-              animation="Idle" 
-              @anim-loop="(animation) => console.log(animation)" 
+              v-model:loaded="isModelLoaded"
+              :position="modelPosition"
+              :animation="modelAnimation"
+              :loop-animation="modelAnimationLoop"
+              @anim-finish="(animation) => onAnimationFinished(animation)"
+              :scale="2.7"
             />
           </Scene>
         </Viewer>
@@ -78,4 +79,43 @@ import Scene from './3d/Scene.vue'
 import Model from './3d/Model.vue'
 import Camera from './3d/Camera.vue'
 import Controls from './3d/Controls.vue'
+
+const startY = 12
+const targetY = -2.5
+const duration = 5.0
+let elapsedTime = 0
+
+const modelPosition = ref<[number, number, number]>([0, startY, 0])
+const modelAnimation = ref<string>("Falling");
+const modelAnimationLoop = ref<boolean>(true);
+const isModelLoaded = ref<boolean>(false);
+
+function onSceneUpdate(delta: number) {
+  if (!isModelLoaded.value) return
+  if (modelAnimation.value != "Falling") return
+
+  if (modelPosition.value[1] == targetY) {
+    modelAnimationLoop.value = false
+    modelAnimation.value = "FlatImpact"
+  }
+
+  if (elapsedTime < duration) {
+    const safeDelta = Math.min(delta, 0.05)
+    elapsedTime += safeDelta
+    const progress = Math.min(elapsedTime / duration, 1)
+    const easeInQuad = Math.pow(progress, 2)
+    const currentY = startY + (targetY - startY) * easeInQuad
+    modelPosition.value = [modelPosition.value[0], currentY, modelPosition.value[2]]
+  }
+}
+
+function onAnimationFinished(animation: string) {
+  if (animation == 'FlatImpact') {
+    modelAnimation.value = 'ImpactStandup'
+  }
+  else if (animation == 'ImpactStandup') {
+    modelAnimationLoop.value = true
+    modelAnimation.value = 'Idle'
+  }
+}
 </script>

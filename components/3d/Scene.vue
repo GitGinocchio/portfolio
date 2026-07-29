@@ -9,16 +9,21 @@ import { shallowRef, inject, provide, onMounted, onBeforeUnmount, watch, type Re
 import { Scene, Camera } from 'three'
 
 const props = withDefaults(defineProps<{ active?: boolean }>(), { active: true })
-
-const viewerContext = inject<{
-  activeScene: Ref<Scene | null>
-  activeCamera: Ref<Camera | null>
-} | null>('viewerContext', null)
+const emit = defineEmits<{
+  (e: 'update', delta: number): void
+}>()
 
 const scene = new Scene()
 const activeCamera = shallowRef<Camera | null>(null)
 
 provide('sceneContext', { scene, activeCamera })
+const viewerContext = inject<{ activeScene: Ref<Scene | null>, activeCamera: Ref<Camera | null> } | null>('viewerContext', null)
+
+useUpdate((delta) => {
+  if (viewerContext?.activeScene.value == scene) {
+    emit("update", delta)
+  }
+})
 
 const syncWithViewer = () => {
   if (!viewerContext) return

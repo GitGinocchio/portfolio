@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { ref, shallowRef, inject, watch, onMounted, onBeforeUnmount, type ShallowRef } from 'vue'
-import { Timer, Scene, Camera, AnimationClip, AnimationAction, AnimationMixer } from 'three'
+import { Timer, Scene, Camera, AnimationClip, AnimationAction, AnimationMixer, LoopOnce, LoopRepeat } from 'three'
 import type { GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 const sceneContext = inject<{ scene: Scene, activeCamera: ShallowRef<Camera | null> } | null>('sceneContext', null)
@@ -18,14 +18,17 @@ const props = withDefaults(
     rotation?: [number, number, number]
     scale?: number | [number, number, number]
     animation?: string
+    loopAnimation?: boolean
   }>(),
   {
     position: () => [0, 0, 0],
     rotation: () => [0, 0, 0],
-    scale: 1
+    scale: 1,
+    loopAnimation: true
   }
 )
 
+const isLoaded = defineModel<boolean>('loaded', { default: false })
 const emit = defineEmits<{
   (e: 'load', gltf: GLTF): void
   (e: 'progress', event: ProgressEvent<EventTarget>): void
@@ -73,6 +76,8 @@ const setupMixerListeners = () => {
   })
 }
 
+
+
 const playAnimation = (name?: string) => {
   if (!mixer || !model.value?.animations.length) return
 
@@ -94,6 +99,14 @@ const playAnimation = (name?: string) => {
 
   if (currentAction && currentAction !== newAction) {
     currentAction.fadeOut(0.3)
+  }
+
+  if (props.loopAnimation) {
+    newAction.setLoop(LoopRepeat, Infinity)
+    newAction.clampWhenFinished = false
+  } else {
+    newAction.setLoop(LoopOnce, 1)
+    newAction.clampWhenFinished = true
   }
 
   newAction
@@ -124,12 +137,16 @@ const applyTransformations = () => {
 }
 
 const initModel = async () => {
+  isLoaded.value = false
   if (!props.path) return
 
   const gltf = await loadModel({
     path: props.path,
     onProgress: (event) => emit('progress', event),
-    onError: (err) => emit('error', err)
+    onError: (err) => {
+      isLoaded.value = false
+      emit('error', err)
+    }
   })
 
   if (gltf) {
@@ -147,6 +164,7 @@ const initModel = async () => {
       sceneContext.scene.add(gltf.scene)
     }
 
+    isLoaded.value = true
     emit('load', gltf)
   }
 }
@@ -173,22 +191,15 @@ const cleanupModel = () => {
     releaseModel(props.path, model.value?.scene)
   }
 
+  isLoaded.value = false
   model.value = null
   loopCount.value = 0
 }
 
-watch(() => props.animation, (newAnimName) => {
-  playAnimation(newAnimName)
-})
-
-watch(
-  () => [props.position, props.rotation, props.scale],
-  applyTransformations,
-  { deep: true }
-)
-
-watch(
-  () => props.path,
+watch(() => props.animation, (newAnimName) => playAnimation(newAnimName))
+watch(() => props.loopAnimation, () => playAnimation(props.animation))
+watch(() => [props.position, props.rotation, props.scale], applyTransformations, { deep: true })
+watch(() => props.path,
   async (newPath, oldPath) => {
     if (oldPath) cleanupModel()
     await initModel()
