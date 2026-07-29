@@ -1,9 +1,10 @@
 <template>
-  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center">
+  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center">
     
-    <!-- Background Glow Effects -->
-    <div class="absolute -top-40 -left-40 w-500px h-500px bg-primary-400/20 dark:bg-primary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
-    <div class="absolute -bottom-40 -right-40 w-500px h-500px bg-secondary-400/20 dark:bg-secondary-600/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
+    <!-- Background Glow Effects & Tech Grid Pattern -->
+    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/15 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
+    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/15 dark:bg-secondary-500/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none z-0"></div>
 
     <!-- 1. CANVAS 3D (Nella metà destra su Desktop) -->
     <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full lg:h-full z-0 pointer-events-auto">
@@ -11,14 +12,16 @@
         <Viewer>
           <Scene @update="(delta) => onSceneUpdate(delta)">
             <Camera  
-              :look-at="[0, -0.2, 0]" 
-              :position="[0, 1.2, 5.5]" 
+              :look-at="[0, 0, 0]" 
+              :position="[0, 0, 5.5]" 
             />
             <Controls 
-              :target="[0, -0.2, 0]" 
+              :target="[0, 0, 0]" 
               :enable-zoom="false" 
-              :max-polar-angle="Math.PI / 1.5" 
-              :min-polar-angle="Math.PI / 4"
+              :max-polar-angle="Math.PI / 1.8" 
+              :min-polar-angle="Math.PI / 2.2"
+              :max-azimuth-angle="Math.PI / 6"
+              :min-azimuth-angle="-Math.PI / 6"
               :idle-timeout="2000"
               :reset-speed="0.05"
             />
@@ -36,39 +39,67 @@
       </ClientOnly>
     </div>
 
-    <!-- 2. CONTENUTO TEXT / HERO -->
-    <div class="w-full px-6 sm:px-12 lg:px-16 relative z-10 pointer-events-none my-auto">
+    <!-- 2. CONTENUTO HERO -->
+    <div class="w-full max-w-7xl px-6 sm:px-12 lg:px-16 relative z-10 pointer-events-none py-20 my-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 flex flex-col items-start text-left select-none pointer-events-auto">
-          <span class="px-3.5 py-1 text-xs font-mono bg-primary-500/10 text-primary-600 dark:text-primary-300 border border-primary-500/20 rounded-full mb-4 shadow-xs">
-            Portfolio
-          </span>
           
-          <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-gray-900 dark:text-white leading-[0.95]">
+          <!-- Status Badge con Glow Pulse -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 backdrop-blur-md mb-6 shadow-xs">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-xs font-mono font-medium text-gray-700 dark:text-gray-300">
+              Disponibile per nuovi progetti
+            </span>
+          </div>
+          
+          <!-- Main Heading -->
+          <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-gray-900 dark:text-white leading-[0.95]">
             Giulio Tognetto
           </h1>
           
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold bg-linear-to-r from-primary-500 via-primary-400 to-secondary-500 bg-clip-text text-transparent mt-4">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-semibold bg-gradient-to-r from-primary-500 via-primary-400 to-secondary-500 bg-clip-text text-transparent mt-4">
             Software Developer
           </h2>
 
-          <p class="mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+          <p class="mt-6 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed">
             Sviluppatore Full-Stack specializzato in architetture ad alte prestazioni, sistemi web reattivi ed esperienze 3D interattive.
           </p>
 
-          <!-- CTA Buttons -->
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="#projects" class="px-6 py-3 rounded-xl font-medium bg-primary-600 hover:bg-primary-500 text-white transition-all shadow-lg shadow-primary-500/25">
-              Vedi Progetti
+          <!-- Tech Pills Highlights -->
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span v-for="tech in ['Vue.js / Nuxt', 'TypeScript', 'Rust', 'Three.js', 'Cloudflare']" :key="tech" 
+                  class="text-xs font-mono px-3 py-1 rounded-lg bg-gray-200/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border border-gray-300/40 dark:border-gray-700/40 backdrop-blur-xs">
+              {{ tech }}
+            </span>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-primary-600 hover:bg-primary-500 text-white transition-all shadow-lg shadow-primary-500/25 active:scale-95">
+              <span>Vedi Progetti</span>
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </a>
-            <a href="#contact" class="px-6 py-3 rounded-xl font-medium bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all">
+            <a href="#contact" class="px-6 py-3.5 rounded-xl font-medium bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700/60 transition-all active:scale-95 shadow-xs">
               Contattami
             </a>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#projects" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors z-10 pointer-events-auto">
+      <span class="text-[10px] font-mono uppercase tracking-widest">Scroll</span>
+      <div class="w-5 h-9 rounded-full border-2 border-current flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
+      </div>
+    </a>
 
   </section>
 </template>
@@ -80,40 +111,43 @@ import Model from './3d/Model.vue'
 import Camera from './3d/Camera.vue'
 import Controls from './3d/Controls.vue'
 
-const startY = 12
+const startY = 10
 const targetY = -2.5
-const duration = 5.0
+const duration = 2.5
 let elapsedTime = 0
 
 const modelPosition = ref<[number, number, number]>([0, startY, 0])
-const modelAnimation = ref<string>("Falling");
-const modelAnimationLoop = ref<boolean>(true);
-const isModelLoaded = ref<boolean>(false);
+const modelAnimation = ref<string>("Falling")
+const modelAnimationLoop = ref<boolean>(true)
+const isModelLoaded = ref<boolean>(false)
+
+let hasImpacted = false
 
 function onSceneUpdate(delta: number) {
-  if (!isModelLoaded.value) return
-  if (modelAnimation.value != "Falling") return
-
-  if (modelPosition.value[1] == targetY) {
-    modelAnimationLoop.value = false
-    modelAnimation.value = "FlatImpact"
-  }
+  if (!isModelLoaded.value || hasImpacted) return
 
   if (elapsedTime < duration) {
     const safeDelta = Math.min(delta, 0.05)
     elapsedTime += safeDelta
     const progress = Math.min(elapsedTime / duration, 1)
+    
     const easeInQuad = Math.pow(progress, 2)
     const currentY = startY + (targetY - startY) * easeInQuad
-    modelPosition.value = [modelPosition.value[0], currentY, modelPosition.value[2]]
+    modelPosition.value = [0, currentY, 0]
+
+    if (progress >= 1) {
+      hasImpacted = true
+      modelPosition.value = [0, targetY, 0]
+      modelAnimationLoop.value = false
+      modelAnimation.value = "FlatImpact"
+    }
   }
 }
 
 function onAnimationFinished(animation: string) {
-  if (animation == 'FlatImpact') {
+  if (animation === 'FlatImpact') {
     modelAnimation.value = 'ImpactStandup'
-  }
-  else if (animation == 'ImpactStandup') {
+  } else if (animation === 'ImpactStandup') {
     modelAnimationLoop.value = true
     modelAnimation.value = 'Idle'
   }
