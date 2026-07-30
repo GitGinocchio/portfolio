@@ -2,26 +2,24 @@
   <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center">
     
     <!-- Background Glow Effects & Tech Grid Pattern -->
-    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/15 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
-    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/15 dark:bg-secondary-500/20 rounded-full blur-[128px] pointer-events-none z-0"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none z-0"></div>
+    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/15 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0" />
+    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/15 dark:bg-secondary-500/20 rounded-full blur-[128px] pointer-events-none z-0" />
+    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none z-0" />
 
     <!-- 1. CANVAS 3D (Nella metà destra su Desktop) -->
-    <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full lg:h-full z-0 pointer-events-auto">
+    <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full z-0 pointer-events-auto">
       <ClientOnly>
         <Viewer>
           <Scene @update="(delta) => onSceneUpdate(delta)">
-            <Camera  
+            <Camera 
               :look-at="[0, 0, 0]" 
               :position="[0, 0, 5.5]" 
             />
             <Controls 
               :target="[0, 0, 0]" 
               :enable-zoom="false" 
-              :max-polar-angle="Math.PI / 1.8" 
-              :min-polar-angle="Math.PI / 2.2"
-              :max-azimuth-angle="Math.PI / 6"
-              :min-azimuth-angle="-Math.PI / 6"
+              :max-polar-angle="Math.PI / 2" 
+              :min-polar-angle="Math.PI / 4"
               :idle-timeout="2000"
               :reset-speed="0.05"
             />
@@ -40,20 +38,23 @@
     </div>
 
     <!-- 2. CONTENUTO HERO -->
-    <div class="w-full max-w-7xl px-6 sm:px-12 lg:px-16 relative z-10 pointer-events-none py-20 my-auto">
+    <UContainer class="w-full relative z-10 pointer-events-none py-20 my-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 flex flex-col items-start text-left select-none pointer-events-auto">
           
           <!-- Status Badge con Glow Pulse -->
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-800 backdrop-blur-md mb-6 shadow-xs">
+          <UBadge 
+            color="neutral"
+            variant="outline" 
+            size="lg"
+            class="mb-6 rounded-full px-3.5 py-1.5 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 gap-2.5 font-mono font-medium text-gray-700 dark:text-gray-300"
+          >
             <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
-            <span class="text-xs font-mono font-medium text-gray-700 dark:text-gray-300">
-              Disponibile per nuovi progetti
-            </span>
-          </div>
+            Disponibile per nuovi progetti
+          </UBadge>
           
           <!-- Main Heading -->
           <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-gray-900 dark:text-white leading-[0.95]">
@@ -70,36 +71,56 @@
 
           <!-- Tech Pills Highlights -->
           <div class="mt-6 flex flex-wrap gap-2">
-            <span v-for="tech in ['Vue.js / Nuxt', 'TypeScript', 'Rust', 'Three.js', 'Cloudflare']" :key="tech" 
-                  class="text-xs font-mono px-3 py-1 rounded-lg bg-gray-200/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border border-gray-300/40 dark:border-gray-700/40 backdrop-blur-xs">
+            <UBadge
+              v-for="tech in ['Vue.js / Nuxt', 'TypeScript', 'Rust', 'Three.js', 'Cloudflare']" 
+              :key="tech"
+              color="primary"
+              variant="subtle"
+              size="md"
+              class="font-mono rounded-lg px-3 py-1 bg-gray-200/60 dark:bg-gray-800/60 border border-gray-300/40 dark:border-gray-700/40 backdrop-blur-xs text-gray-700 dark:text-gray-300"
+            >
               {{ tech }}
-            </span>
+            </UBadge>
           </div>
 
           <!-- Action Buttons -->
           <div class="mt-8 flex flex-wrap items-center gap-4">
-            <a href="#projects" class="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-medium bg-primary-600 hover:bg-primary-500 text-white transition-all shadow-lg shadow-primary-500/25 active:scale-95">
-              <span>Vedi Progetti</span>
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-            <a href="#contact" class="px-6 py-3.5 rounded-xl font-medium bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700/60 transition-all active:scale-95 shadow-xs">
+            <UButton
+              to="#projects"
+              color="primary"
+              variant="solid"
+              size="xl"
+              trailing-icon="i-heroicons-arrow-right-20-solid"
+              class="rounded-xl shadow-lg shadow-primary-500/25 active:scale-95 transition-all group"
+            >
+              Vedi Progetti
+            </UButton>
+
+            <UButton
+              to="#contact"
+              color="primary"
+              variant="outline"
+              size="xl"
+              class="rounded-xl bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 border-gray-200 dark:border-gray-700/60 active:scale-95 transition-all shadow-xs"
+            >
               Contattami
-            </a>
+            </UButton>
           </div>
 
         </div>
       </div>
-    </div>
+    </UContainer>
 
     <!-- Scroll Indicator -->
-    <a href="#projects" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors z-10 pointer-events-auto">
+    <NuxtLink 
+      to="#projects" 
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors z-10 pointer-events-auto"
+    >
       <span class="text-[10px] font-mono uppercase tracking-widest">Scroll</span>
       <div class="w-5 h-9 rounded-full border-2 border-current flex items-start justify-center p-1">
-        <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
+        <div class="w-1 h-2 bg-current rounded-full animate-bounce" />
       </div>
-    </a>
+    </NuxtLink>
 
   </section>
 </template>
