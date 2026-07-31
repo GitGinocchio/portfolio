@@ -24,6 +24,12 @@ export default defineNuxtConfig({
     '@tresjs/nuxt',
   ],
 
+  colorMode: {
+    preference: "system",
+    fallback: "white",
+    classSuffix: ''
+  },
+
   nitro: {
     preset: "cloudflare-module"
   }

@@ -3,6 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "deploy" : "npx wrangler deploy .output/server/index.mjs --assets .output/public",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -25,6 +26,7 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.120",
     "@types/three": "^0.185.1"
   }
 }

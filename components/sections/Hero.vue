@@ -1,20 +1,15 @@
 <template>
-  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center">
+  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center z-0">
     
-    <!-- Background Glow Effects & Tech Grid Pattern -->
-    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/15 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0" />
-    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/15 dark:bg-secondary-500/20 rounded-full blur-[128px] pointer-events-none z-0" />
-    <div class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none z-0" />
-
-    <!-- 1. CANVAS 3D (Nella metà destra su Desktop) -->
+    <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/30 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
+    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/10 dark:bg-secondary-500/25 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
+    <div class="absolute inset-0 bg-[radial-gradient(#9ca3af_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:24px_24px] opacity-70 dark:opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+        
     <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full z-0 pointer-events-auto">
       <ClientOnly>
         <Viewer>
           <Scene @update="(delta) => onSceneUpdate(delta)">
-            <Camera 
-              :look-at="[0, 0, 0]" 
-              :position="[0, 0, 5.5]" 
-            />
+            <Camera :look-at="[0, 0, 0]" :position="[0, 0, 5.5]" />
             <Controls 
               :target="[0, 0, 0]" 
               :enable-zoom="false" 
@@ -37,12 +32,10 @@
       </ClientOnly>
     </div>
 
-    <!-- 2. CONTENUTO HERO -->
     <UContainer class="w-full relative z-10 pointer-events-none py-20 my-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 flex flex-col items-start text-left select-none pointer-events-auto">
           
-          <!-- Status Badge con Glow Pulse -->
           <UBadge 
             color="neutral"
             variant="outline" 
@@ -56,7 +49,6 @@
             Disponibile per nuovi progetti
           </UBadge>
           
-          <!-- Main Heading -->
           <h1 class="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tight text-gray-900 dark:text-white leading-[0.95]">
             Giulio Tognetto
           </h1>
@@ -69,7 +61,6 @@
             Sviluppatore Full-Stack specializzato in architetture ad alte prestazioni, sistemi web reattivi ed esperienze 3D interattive.
           </p>
 
-          <!-- Tech Pills Highlights -->
           <div class="mt-6 flex flex-wrap gap-2">
             <UBadge
               v-for="tech in ['Vue.js / Nuxt', 'TypeScript', 'Rust', 'Three.js', 'Cloudflare']" 
@@ -83,7 +74,6 @@
             </UBadge>
           </div>
 
-          <!-- Action Buttons -->
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <UButton
               to="#projects"
@@ -111,26 +101,16 @@
       </div>
     </UContainer>
 
-    <!-- Scroll Indicator -->
-    <NuxtLink 
-      to="#projects" 
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors z-10 pointer-events-auto"
-    >
-      <span class="text-[10px] font-mono uppercase tracking-widest">Scroll</span>
-      <div class="w-5 h-9 rounded-full border-2 border-current flex items-start justify-center p-1">
-        <div class="w-1 h-2 bg-current rounded-full animate-bounce" />
-      </div>
-    </NuxtLink>
-
+    <ScrollIndicator />
   </section>
 </template>
 
 <script setup lang="ts">
-import Viewer from './3d/Viewer.vue'
-import Scene from './3d/Scene.vue'
-import Model from './3d/Model.vue'
-import Camera from './3d/Camera.vue'
-import Controls from './3d/Controls.vue'
+import Viewer from '~/components/3d/Viewer.vue'
+import Scene from '~/components/3d/Scene.vue'
+import Model from '~/components/3d/Model.vue'
+import Camera from '~/components/3d/Camera.vue'
+import Controls from '~/components/3d/Controls.vue'
 
 const startY = 10
 const targetY = -2.5

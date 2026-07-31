@@ -1,27 +1,15 @@
 <template>
-  <UHeader title="Il mio sito">
-    <template #title>
-      <Logo />
-    </template>
-    <template #right>
-      <UColorModeButton />
-    </template>
-  </UHeader>
+  <Header />
 
   <UMain>
     <slot />
   </UMain>
 
-  <UFooter>
-    <template #left>
-      <p class="text-muted text-sm">
-        © {{ new Date().getFullYear() }} Il mio sito
-      </p>
-    </template>
-  </UFooter>
+  <Footer />
 </template>
 
 <script setup lang="ts">
+import Header from '~/components/Header.vue';
 </script>
 
 <style>
