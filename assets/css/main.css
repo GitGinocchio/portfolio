@@ -1,65 +1,68 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme {
+:root {
   --font-sans: 'Pretendard Std Variable', sans-serif;
+  --font-mono: 'Fira Code', monospace;
 
-  /* --- PALETTE PRIMARY (Accento arancione caldo) --- */
-  --color-primary-50: #fdf9f5;
-  --color-primary-100: #fbeee1;
-  --color-primary-200: #f4c7a0;
-  --color-primary-300: #edb483;
-  --color-primary-400: #e19c63;
-  --color-primary-500: #d68a4a;
-  --color-primary-600: #bc7239;
-  --color-primary-700: #96592d;
-  --color-primary-800: #714224;
-  --color-primary-900: #4d2d19;
-  --color-primary-950: #2e1b0f;
+  /* --- PRIMARY (Arancione Cotto / Terracotta caldo e distinto) --- */
+  --color-primary-50:  #fdf6f0;
+  --color-primary-100: #fbe9da;
+  --color-primary-200: #f6cfb5;
+  --color-primary-300: #eeab85;
+  --color-primary-400: #e27f52;
+  --color-primary-500: #d45d2a; /* Colore base: arancione ricco, ben visibile ma non "fluo" */
+  --color-primary-600: #b9461f;
+  --color-primary-700: #93331c;
+  --color-primary-800: #782a1c;
+  --color-primary-900: #62251a;
+  --color-primary-950: #35100a;
 
-  /* --- PALETTE SECONDARY (Terracotta più profondo, per bottoni/CTA) --- */
-  --color-secondary-50: #fdf6f3;
-  --color-secondary-100: #fae8e0;
-  --color-secondary-200: #f2c9b6;
-  --color-secondary-300: #e6a483;
-  --color-secondary-400: #d67e56;
-  --color-secondary-500: #c2603a; /* Colore Core Secondary */
-  --color-secondary-600: #a24a2a;
-  --color-secondary-700: #813a22;
-  --color-secondary-800: #642e1c;
-  --color-secondary-900: #482115;
-  --color-secondary-950: #2b130c;
+  /* --- SECONDARY (Terracotta / Rosso Mattone Profondo) --- */
+  /* Ha una dominante più rossa e scura per staccare nettamente dall'arancione */
+  --color-secondary-50:  #fdf5f4;
+  --color-secondary-100: #fbe6e4;
+  --color-secondary-200: #f7ceca;
+  --color-secondary-300: #eeaaa2;
+  --color-secondary-400: #e07a70;
+  --color-secondary-500: #c24e43; /* Rosso terra / mattone elegante */
+  --color-secondary-600: #a8382e;
+  --color-secondary-700: #8a2b22;
+  --color-secondary-800: #73261f;
+  --color-secondary-900: #60241e;
+  --color-secondary-950: #350e0a;
 
-  /* --- PALETTE GRAY (Crema → Nero caldo) --- */
-  --color-gray-50: #ffffff;
-  --color-gray-100: #f7f3ec;
-  --color-gray-200: #ede6d8;
-  --color-gray-300: #ddd3bf;
-  --color-gray-400: #c2b69c;
-  --color-gray-500: #9c8f76;
-  --color-gray-600: #786d58;
-  --color-gray-700: #564d3d;
-  --color-gray-800: #3a332a;
-  --color-gray-900: #241f19;
-  --color-gray-950: #1c1a17;
+  /* --- PALETTE GRAY (Crema Seta → Antracite Caldo) --- */
+  /* Progressioni ricalibrate per garantire un contrasto accessibile (WCAG) su sfondi chiari/scuri */
+  --color-gray-50:  #faf8f5; /* Sfondo ultralight pulito */
+  --color-gray-100: #f3efe6; /* Sfondo principale card/sezione (il tuo crema) */
+  --color-gray-200: #e6dfd1; /* Bordi e divisori */
+  --color-gray-300: #d4c9b5;
+  --color-gray-400: #b5a68e; /* Testo disabilitato o icone secondarie */
+  --color-gray-500: #8d7e67;
+  --color-gray-600: #6f624f; /* Testo secondario */
+  --color-gray-700: #554a3b;
+  --color-gray-800: #3b3329;
+  --color-gray-900: #231e18; /* Testo principale in Light mode */
+  --color-gray-950: #16130f; /* Sfondo Dark mode */
 
-  /* --- ERROR / SUCCESS / WARNING (toni smorzati, coerenti col resto) --- */
-  --color-error-500: #c14f3e;
-  --color-success-500: #7a9464;
-  --color-warning-500: #c2913a;
+  /* --- STATI (Affinati e coerenti con la saturazione del sito) --- */
+  --color-error-500:   #c84a38;
+  --color-success-500: #5b8750;
+  --color-warning-500: #c9882a;
 }
 
 /* --- LOGICA ADATTIVA --- */
 :root {
-  --ui-primary: var(--color-primary-200);
+  --ui-primary: var(--color-primary-500);
   --ui-secondary: var(--color-secondary-500);
-  --ui-gray: var(--color-gray-950);
+  --ui-gray: var(--color-gray-900); /* Corretto: in light mode usa il grigio scuro per i testi */
   --ui-bg: var(--color-gray-100);
 }
 
 .dark {
-  --ui-primary: var(--color-primary-300);
-  --ui-secondary: var(--color-secondary-400);
+  --ui-primary: var(--color-primary-400); /* Tono leggermente più chiaro per spiccare sul fondo scuro */
+  --ui-secondary: var(--color-secondary-300);
   --ui-gray: var(--color-gray-100);
   --ui-bg: var(--color-gray-950);
 }

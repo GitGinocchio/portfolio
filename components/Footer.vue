@@ -11,7 +11,7 @@
     <template #right>
       <UButton
         icon="i-simple-icons-discord"
-        color="neutral"
+        color="primary"
         variant="ghost"
         to="https://discord.com/users/778017089230209045"
         target="_blank"
@@ -19,7 +19,7 @@
       />
       <UButton
         icon="i-simple-icons-instagram"
-        color="neutral"
+        color="primary"
         variant="ghost"
         to="https://www.instagram.com/giulio.tognetto"
         target="_blank"
@@ -27,7 +27,7 @@
       />
       <UButton
         icon="i-simple-icons-github"
-        color="neutral"
+        color="primary"
         variant="ghost"
         to="https://github.com/GitGinocchio"
         target="_blank"

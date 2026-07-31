@@ -3,12 +3,9 @@
     <UButton
       :aria-label="`Switch to ${nextTheme} mode`"
       :icon="`i-lucide-${nextTheme === 'dark' ? 'sun' : 'moon'}`"
-      color="neutral"
+      color="primary"
       variant="ghost"
       size="md"
-      :ui="{
-        leadingIcon: 'text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors duration-150'
-      }"
       class="rounded-full"
       @click="startViewTransition"
     />
@@ -16,20 +13,20 @@
       <UButton
         aria-label="Loading theme toggle"
         icon="i-lucide-sun"
-        color="neutral"
+        color="primary"
         variant="ghost"
         size="md"
-        class="rounded-full opacity-0 pointer-events-none"
+        class="rounded-full pointer-events-none"
       />
     </template>
     <template #fallback>
       <UButton
         aria-label="Loading theme toggle"
         icon="i-lucide-sun"
-        color="neutral"
+        color="primary"
         variant="ghost"
         size="md"
-        class="rounded-full opacity-0 pointer-events-none"
+        class="rounded-full pointer-events-none"
       />
     </template>
   </ClientOnly>

@@ -13,6 +13,9 @@ import Contacts from '~/components/sections/Contacts.vue';
 
 useHead({
   title: 'Giulio Tognetto - Portfolio',
+  htmlAttrs: {
+    lang: 'en'
+  },
   meta: [
     { name: 'description', content: 'Portfolio di Giulio Tognetto, Sviluppatore Full-Stack specializzato in architetture ad alte prestazioni, Rust, Vue/Nuxt e soluzioni 3D.' }
   ]

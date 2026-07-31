@@ -2,8 +2,9 @@
   "name": "portfolio",
   "type": "module",
   "private": true,
+  "packageManager": "bun",
   "scripts": {
-    "deploy" : "npx wrangler deploy .output/server/index.mjs --assets .output/public",
+    "deploy": "npx wrangler deploy .output/server/index.mjs --assets .output/public",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -26,7 +27,12 @@
     "vue-router": "^5.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@iconify-json/lucide": "^1.2.120",
-    "@types/three": "^0.185.1"
+    "@types/three": "^0.185.1",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
+    "eslint": "^10.8.0",
+    "eslint-plugin-vue": "^10.10.0"
   }
 }

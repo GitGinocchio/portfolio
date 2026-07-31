@@ -1,9 +1,8 @@
 <template>
-  <NuxtLink 
-    :to="props.to"
+  <div 
     class="logo-wrapper inline-block group cursor-pointer select-none active:scale-90 transition-transform duration-150 ease-out" 
     :class="{ 'is-active': isToggled }"
-    aria-label="Home"
+    aria-label="Logo"
     @touchstart="handleTouchStart"
   >
     <div 
@@ -22,7 +21,7 @@
         class="absolute inset-0 w-full h-full object-contain opacity-0 scale-95 transition-all duration-250 group-hover:opacity-100 group-hover:scale-105 in-[.is-active]:opacity-100 in-[.is-active]:scale-105"
       />
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -30,14 +29,12 @@ import { ref, computed } from 'vue'
 
 const props = withDefaults(
   defineProps<{ 
-    size?: 'sm' | 'md' | 'lg' | 'xl' | string, 
-    to?: string 
+    size?: 'sm' | 'md' | 'lg' | 'xl' | string
   }>(), 
   {
-    size: 'md',
-    to: ''
+    size: 'md'
   }
-);
+)
 
 const presetSizes: Record<string, string> = {
   sm: 'w-8 h-8 sm:w-10 sm:h-10',

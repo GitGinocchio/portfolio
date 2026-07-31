@@ -4,16 +4,22 @@
       <slot />
     </div>
 
-    <canvas ref="canvasRef" class="w-full h-full pointer-events-auto" />
+    <canvas 
+      ref="canvasRef" 
+      class="w-full h-full pointer-events-auto transition-opacity duration-300"
+      :class="isReady ? 'opacity-100' : 'opacity-0'" 
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, shallowRef, provide, useSlots } from 'vue'
-import { WebGLRenderer, Scene, Camera } from 'three'
+import { ref, onMounted, onBeforeUnmount, shallowRef, provide } from 'vue'
+import { WebGLRenderer, Scene, Camera, Timer } from 'three'
 
 const containerRef = ref<HTMLDivElement | null>(null)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
+const isReady = ref<boolean>(false)
+const timer = new Timer()
 
 const activeScene = shallowRef<Scene | null>(null)
 const activeCamera = shallowRef<Camera | null>(null)
@@ -66,6 +72,7 @@ const emit = defineEmits<{
 
 onMounted(() => {
   if (!canvasRef.value || !containerRef.value) return
+  timer.connect(document)
 
   const width = canvasRef.value.clientWidth
   const height = canvasRef.value.clientHeight
@@ -74,16 +81,21 @@ onMounted(() => {
   renderer.value.setSize(width, height)
   renderer.value.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
+  isReady.value = true
+
   handleResize()
 
   resizeObserver = new ResizeObserver(() => handleResize())
   resizeObserver.observe(containerRef.value)
-
-  handleUpdate(1)
+  handleUpdate()
 })
 
-async function handleUpdate(delta: number) {
+async function handleUpdate() {
   animationFrameId = requestAnimationFrame(handleUpdate)
+
+  timer.update()
+  const delta = timer.getDelta()
+
   const currentScene = activeScene.value || defaultScene
   const currentCamera = activeCamera.value || defaultCamera
 
@@ -96,15 +108,20 @@ async function handleUpdate(delta: number) {
 
 async function handleResize()  {
   if (!containerRef.value) return
+  isReady.value = false
+
   containerWidth.value = containerRef.value.clientWidth
   containerHeight.value = containerRef.value.clientHeight
 
   resizeCallbacks.forEach((cb) => cb(containerWidth.value, containerHeight.value))
 
   renderer.value?.setSize(containerWidth.value, containerHeight.value, false)
+
+  isReady.value = true
 }
 
 onBeforeUnmount(() => {
+  isReady.value = false
   cancelAnimationFrame(animationFrameId)
   renderer.value?.dispose()
 })

@@ -17,6 +17,14 @@
 import { onMounted } from 'vue'
 
 const colorMode = useColorMode()
+const calBrandColor = ref('');
+
+onMounted(() => {
+  loadCalSdk()
+  calBrandColor.value = getComputedStyle(document.documentElement)
+    .getPropertyValue('--color-primary-500')
+    .trim();
+});
 
 const loadCalSdk = () => {
   if (typeof window === 'undefined') return
@@ -31,7 +39,12 @@ const loadCalSdk = () => {
       if (!cal.loaded) {
         cal.ns = {};
         cal.q = cal.q || [];
-        d.head.appendChild(d.createElement("script")).src = A;
+
+        const script = d.createElement("script");
+        script.src = A;
+        script.crossOrigin = "anonymous"; // Aggiunge l'attributo crossorigin="anonymous"
+        d.head.appendChild(script);
+
         cal.loaded = true;
       }
       if (ar[0] === L) {
@@ -68,25 +81,20 @@ const openCalModal = () => {
     hideEventTypeDetails: false,
     layout: "month_view",
     theme: theme,
-    styles: {
-      body: {
-        background: "transparent !important",
-        backgroundColor: "transparent !important"
+    cssVarsPerTheme: {
+      dark: {
+        "cal-brand" : calBrandColor.value,
+        "--cal-bg": "transparent",
+        "--cal-bg-emphasis": "transparent",
+        "--cal-bg-muted": "transparent",
+        "--cal-bg-subtle": "transparent"
       },
-      enabled: true,
-      cssVarsPerTheme: {
-        dark: {
-          "--cal-bg": "transparent",
-          "--cal-bg-emphasis": "transparent",
-          "--cal-bg-muted": "transparent",
-          "--cal-bg-subtle": "transparent"
-        },
-        light: {
-          "--cal-bg": "transparent",
-          "--cal-bg-emphasis": "transparent",
-          "--cal-bg-muted": "transparent",
-          "--cal-bg-subtle": "transparent"
-        }
+      light: {
+        "cal-brand" : calBrandColor.value,
+        "--cal-bg": "transparent",
+        "--cal-bg-emphasis": "transparent",
+        "--cal-bg-muted": "transparent",
+        "--cal-bg-subtle": "transparent"
       }
     }
   })
@@ -100,8 +108,4 @@ const openCalModal = () => {
     }
   })
 }
-
-onMounted(() => {
-  loadCalSdk()
-})
 </script>

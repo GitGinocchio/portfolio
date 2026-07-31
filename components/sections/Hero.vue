@@ -2,9 +2,9 @@
   <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center z-0">
     
     <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/30 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
-    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-secondary-500/10 dark:bg-secondary-500/25 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
-    <div class="absolute inset-0 bg-[radial-gradient(#9ca3af_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:24px_24px] opacity-70 dark:opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
-        
+    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-primary-500/30 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
+    <div class="absolute inset-0 bg-[radial-gradient(var(--color-primary-400)_1px,transparent_1px)] dark:bg-[radial-gradient(var(--color-primary-600)_1px,transparent_1px)] [background-size:24px_24px] opacity-25 dark:opacity-20 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
+
     <div class="absolute bottom-0 right-0 w-full lg:w-1/2 h-full z-0 pointer-events-auto">
       <ClientOnly>
         <Viewer>
@@ -114,7 +114,7 @@ import Controls from '~/components/3d/Controls.vue'
 
 const startY = 10
 const targetY = -2.5
-const duration = 2.5
+const duration = 1.0
 let elapsedTime = 0
 
 const modelPosition = ref<[number, number, number]>([0, startY, 0])
