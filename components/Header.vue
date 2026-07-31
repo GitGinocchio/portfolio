@@ -8,7 +8,8 @@
       :ui="{
         item: 'mx-0.5 sm:mx-1',
         link: 'py-2 px-2.5 sm:px-3 text-sm sm:text-base',
-        linkLeadingIcon: 'text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors duration-150 size-5 sm:size-4'
+        // 🚀 Icone ingrandite e con stroke più marcato
+        linkLeadingIcon: 'text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors duration-150 size-5 sm:size-5 stroke-[3px]'
       }"
     >
       <template #list-leading>

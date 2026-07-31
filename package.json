@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "bun",
   "scripts": {
-    "deploy": "npx wrangler deploy .output/server/index.mjs --assets .output/public",
+    "deploy": "nuxt build && npx wrangler deploy .output/server/index.mjs --assets .output/public",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",

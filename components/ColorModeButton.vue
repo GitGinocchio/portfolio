@@ -6,7 +6,7 @@
       color="primary"
       variant="ghost"
       size="md"
-      class="rounded-full"
+      class="rounded-full cursor-pointer"
       @click="startViewTransition"
     />
     <template #placeholder>
