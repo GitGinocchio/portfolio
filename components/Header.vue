@@ -1,22 +1,46 @@
 <template>
-  <div class="fixed top-2 sm:top-4 mx-auto left-1/2 transform -translate-x-1/2 z-50 w-[92vw] sm:w-auto max-w-max">
+  <div class="fixed top-2 sm:top-4 inset-x-0 z-50 px-3 sm:px-0 flex justify-center pointer-events-none">
+    
+    <!-- 1. MOBILE HEADER (Bolla compatta: Logo a sinistra, Burger a destra) -->
+    <div class="flex sm:hidden items-center justify-between w-full max-w-md bg-background/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-full px-3 py-1.5 border-2 border-neutral-200/80 dark:border-neutral-700/80 shadow-md pointer-events-auto">
+      <NuxtLink to="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <Logo size="md" />
+        <span class="font-semibold text-xs tracking-tight text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
+          Home
+        </span>
+      </NuxtLink>
+
+      <div class="flex items-center gap-1.5">
+        <ColorModeButton />
+        <!-- Bottone Hamburger -->
+        <UButton
+          icon="i-heroicons-bars-3"
+          color="neutral"
+          variant="ghost"
+          size="sm"
+          class="rounded-full"
+          aria-label="Apri menu"
+          @click="isMenuOpen = true"
+        />
+      </div>
+    </div>
+
     <UNavigationMenu
       :items="links"
       variant="pill"
       color="primary"
-      class="bg-background/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-full px-2 sm:px-4 py-1.5 sm:py-2 border border-muted/50 shadow-lg shadow-neutral-950/5 w-full justify-between sm:justify-start items-center"
+      class="hidden sm:flex bg-background/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-full px-3 py-2 border-2 border-neutral-200/80 dark:border-neutral-700/80 shadow-md max-w-max items-center pointer-events-auto"
       :ui="{
-        item: 'mx-0.5 sm:mx-1',
-        link: 'py-2 px-2.5 sm:px-3 text-sm sm:text-base',
-        // 🚀 Icone ingrandite e con stroke più marcato
-        linkLeadingIcon: 'text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-500 transition-colors duration-150 size-5 sm:size-5 stroke-[3px]'
+        item: 'mx-0.5',
+        link: 'py-1.5 px-3 text-sm font-medium',
+        linkLeadingIcon: 'text-primary-500 dark:text-primary-400 group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors duration-150 size-4.5 stroke-[2.5px]'
       }"
     >
       <template #list-leading>
         <div class="flex items-center gap-2 pr-2">
           <NuxtLink to="/" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Logo />
-            <span class="font-semibold text-xs sm:text-sm tracking-tight text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
+            <Logo size="md" />
+            <span class="font-semibold text-sm tracking-tight text-neutral-900 dark:text-neutral-100 whitespace-nowrap">
               Home
             </span>
           </NuxtLink>
@@ -30,11 +54,48 @@
         <ColorModeButton />
       </template>
     </UNavigationMenu>
+
+    <USlideover v-model:open="isMenuOpen" title="Menu">
+      <template #content>
+        <div class="p-4 flex flex-col justify-between h-full">
+          <div>
+            <div class="flex items-center justify-between pb-4 mb-4 border-b border-neutral-200 dark:border-neutral-800">
+              <NuxtLink to="/" @click="isMenuOpen = false" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <Logo size="sm" />
+                <span class="font-bold text-sm">Home</span>
+              </NuxtLink>
+            </div>
+
+            <nav class="flex flex-col gap-2">
+              <NuxtLink
+                v-for="item in links"
+                :key="item.to as any"
+                :to="item.to"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+                @click="isMenuOpen = false"
+              >
+                <UIcon :name="item.icon" class="size-5 text-primary-500 stroke-[2.5px]" />
+                <span>{{ item.label }}</span>
+              </NuxtLink>
+            </nav>
+          </div>
+
+          <div class="pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+            <span class="text-xs text-neutral-500">Tema</span>
+            <ColorModeButton @click="isMenuOpen = false" />
+          </div>
+        </div>
+      </template>
+    </USlideover>
+
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import type { NavigationMenuItem } from '@nuxt/ui'
+
+const isMenuOpen = ref(false)
 
 const links: NavigationMenuItem[] = [
   {

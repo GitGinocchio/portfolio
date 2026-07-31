@@ -38,7 +38,7 @@ const props = withDefaults(
 
 const presetSizes: Record<string, string> = {
   sm: 'w-8 h-8 sm:w-10 sm:h-10',
-  md: 'w-12 h-12 sm:w-16 sm:h-16',
+  md: 'w-12 h-12 sm:w-14 sm:h-14',
   lg: 'w-16 h-16 sm:w-20 sm:h-20',
   xl: 'w-20 h-20 sm:w-24 sm:h-24'
 }

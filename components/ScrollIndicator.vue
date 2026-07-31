@@ -1,10 +1,10 @@
 <template>
   <button 
     type="button"
-    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors z-10 pointer-events-auto cursor-pointer focus:outline-none"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-500 dark:text-primary-400 hover:text-primary-600 dark:hover:text-primary-300 transition-colors z-10 pointer-events-auto cursor-pointer focus:outline-none"
     @click="smoothScrollDown"
   >
-    <span class="text-[10px] font-mono uppercase tracking-widest selection-none">
+    <span class="text-[10px] font-mono uppercase tracking-widest select-none">
       {{ label }}
     </span>
     <div class="w-5 h-9 rounded-full border-2 border-current flex items-start justify-center p-1">
