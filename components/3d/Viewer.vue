@@ -6,7 +6,7 @@
 
     <canvas 
       ref="canvasRef" 
-      class="w-full h-full pointer-events-auto transition-opacity duration-300"
+      class="w-full h-full pointer-events-auto transition-opacity duration-500"
       :class="isReady ? 'opacity-100' : 'opacity-0'" 
     />
   </div>
@@ -81,13 +81,13 @@ onMounted(() => {
   renderer.value.setSize(width, height)
   renderer.value.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-  isReady.value = true
-
   handleResize()
 
   resizeObserver = new ResizeObserver(() => handleResize())
   resizeObserver.observe(containerRef.value)
   handleUpdate()
+
+  isReady.value = true
 })
 
 async function handleUpdate() {
