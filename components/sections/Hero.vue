@@ -108,12 +108,6 @@
         </div>
       </div>
     </UContainer>
-
-    <!-- 🎯 SCROLL INDICATOR: Posizionato SEMPRE in fondo alla Hero -->
-    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
-      <ScrollIndicator />
-    </div>
-
   </section>
 </template>
 
