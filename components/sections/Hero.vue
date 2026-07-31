@@ -1,5 +1,6 @@
 <template>
-  <section class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center z-0 pt-16 lg:pt-0">
+  <!-- 🎯 section relative per fare da contenitore al posizionamento absolute dello ScrollIndicator -->
+  <section class="min-h-[100dvh] bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative overflow-hidden transition-colors duration-300 flex items-center justify-center z-0 pt-16 lg:pt-0">
     
     <!-- Background Accents -->
     <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-primary-500/30 dark:bg-primary-500/20 rounded-full blur-[128px] pointer-events-none z-0 transition-all duration-300" />
@@ -7,7 +8,7 @@
     <div class="absolute inset-0 bg-[radial-gradient(var(--color-primary-400)_1px,transparent_1px)] dark:bg-[radial-gradient(var(--color-primary-600)_1px,transparent_1px)] [background-size:24px_24px] opacity-25 dark:opacity-20 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0" />
 
     <!-- Viewport 3D -->
-    <div class="absolute top-17.5 left-0 w-full h-[50vh] lg:top-0 lg:w-1/2 lg:h-full lg:left-auto lg:right-0 z-0 pointer-events-auto">
+    <div class="absolute top-17.5 left-0 w-full h-[40vh] lg:top-0 lg:w-1/2 lg:h-full lg:left-auto lg:right-0 z-0 pointer-events-auto">
       <ClientOnly>
         <Viewer>
           <Scene @update="(delta) => onSceneUpdate(delta)">
@@ -34,7 +35,11 @@
       </ClientOnly>
     </div>
 
-    <UContainer class="w-full relative z-10 pointer-events-none pt-[44vh] sm:pt-[36vh] pb-28 sm:pb-32 lg:py-20 my-auto">
+    <!-- 
+      🎯 Contenuto testuale:
+      - `pb-24`: assicura che se la pagina viene ridimensionata, i bottoni si fermino prima dello scroll indicator in fondo alla Hero.
+    -->
+    <UContainer class="w-full relative z-10 pointer-events-none pt-[38vh] lg:pt-0 pb-24 lg:pb-0 my-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         <div class="lg:col-span-7 flex flex-col items-start text-left select-none pointer-events-auto">
@@ -99,11 +104,16 @@
               Contattami
             </UButton>
           </div>
+
         </div>
       </div>
     </UContainer>
 
-    <ScrollIndicator />
+    <!-- 🎯 SCROLL INDICATOR: Posizionato SEMPRE in fondo alla Hero -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
+      <ScrollIndicator />
+    </div>
+
   </section>
 </template>
 
