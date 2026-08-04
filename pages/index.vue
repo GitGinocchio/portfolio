@@ -1,15 +1,19 @@
 <template>
   <main class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen">
     <Hero />
+    <About />
     <Projects />
-    <Contacts />
+    <Contact />
   </main>
 </template>
 
 <script lang="ts" setup>
 import Hero from '~/components/sections/Hero.vue'
+import About from '~/components/sections/About.vue';
 import Projects from '~/components/sections/Projects.vue';
-import Contacts from '~/components/sections/Contacts.vue';
+import Contact from '~/components/sections/Contact.vue';
+
+useSectionObserver(['hero', 'projects', 'about', 'contact'])
 
 useHead({
   title: 'Giulio Tognetto - Portfolio',

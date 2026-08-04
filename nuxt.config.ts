@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: 'icon', type: 'image/png', href: '/cat-tongue.png' }
+        { rel: 'icon', type: 'image/svg', href: '/cat-tongue.svg' }
       ]
     }
   },

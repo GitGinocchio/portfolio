@@ -6,7 +6,6 @@
     <UContainer class="relative z-10 w-full">
       <div class="max-w-2xl mx-auto text-center flex flex-col items-center">
         
-        <!-- Badge -->
         <UBadge
           color="primary"
           variant="subtle"
@@ -28,6 +27,7 @@
         <div class="mt-8 flex flex-wrap items-center justify-center gap-4 w-full sm:w-auto">
           <BookACall />
           <UButton
+            v-sound
             to="mailto:mail@giuliotognetto.dev"
             color="neutral"
             variant="outline"

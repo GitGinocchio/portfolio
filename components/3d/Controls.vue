@@ -6,12 +6,13 @@
 import { inject, onBeforeUnmount, watch, ref, type ShallowRef } from 'vue'
 import type { Camera, WebGLRenderer, Scene } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { Vector3 } from 'three'
+import { Vector3, MOUSE } from 'three'
 
 const props = withDefaults(
   defineProps<{
     target?: [number, number, number]
     enableZoom?: boolean
+    enablePan?: boolean
     enableDamping?: boolean
     maxPolarAngle?: number
     minPolarAngle?: number
@@ -21,6 +22,7 @@ const props = withDefaults(
   {
     target: () => [0, -0.2, 0],
     enableZoom: false,
+    enablePan: false,
     enableDamping: true,
     maxPolarAngle: Math.PI,
     minPolarAngle: 0,
@@ -67,9 +69,15 @@ const applyPropsToControls = () => {
   if (!controls) return
 
   controls.enableZoom = props.enableZoom
+  controls.enablePan = props.enablePan
   controls.enableDamping = props.enableDamping
   controls.maxPolarAngle = props.maxPolarAngle
   controls.minPolarAngle = props.minPolarAngle
+  controls.mouseButtons = {
+    LEFT: MOUSE.ROTATE,
+    MIDDLE: props.enableZoom ? MOUSE.DOLLY : MOUSE.MIDDLE,
+    RIGHT: props.enablePan ? MOUSE.PAN : MOUSE.RIGHT
+  }
 
   initialTarget.set(...props.target)
   if (!isResetting.value) {
@@ -97,7 +105,6 @@ const initControls = () => {
 
   resetIdleTimer()
 }
-
 
 useUpdate((delta) => {
   if (!controls || !context?.activeCamera.value) return
@@ -138,6 +145,7 @@ watch(
 watch(
   () => [
     props.enableZoom,
+    props.enablePan,
     props.enableDamping,
     props.maxPolarAngle,
     props.minPolarAngle,

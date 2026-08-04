@@ -1,6 +1,7 @@
 <template>
   <div>
     <UButton
+      v-sound
       color="primary"
       variant="solid"
       size="xl"

@@ -1,15 +1,18 @@
 <template>
   <UFooter>
     <template #left>
+      <p class="text-muted text-sm">Copyright</p>
+      <UIcon name="i-lucide-copyright" size="sm" class="text-muted"></UIcon>
       <p class="text-muted text-sm">
-        Copyright © {{ new Date().getFullYear() }} Giulio Tognetto. All rights reserved.
+        {{ new Date().getFullYear() }} Giulio Tognetto. All rights reserved.
       </p>
     </template>
 
-    <!-- <UNavigationMenu :items="items" variant="link" /> -->
+    <UNavigationMenu :items="items" variant="link" />
 
     <template #right>
       <UButton
+        v-sound
         icon="i-simple-icons-discord"
         color="primary"
         variant="ghost"
@@ -18,6 +21,7 @@
         aria-label="Discord"
       />
       <UButton
+        v-sound
         icon="i-simple-icons-instagram"
         color="primary"
         variant="ghost"
@@ -26,6 +30,7 @@
         aria-label="Instagram"
       />
       <UButton
+        v-sound
         icon="i-simple-icons-github"
         color="primary"
         variant="ghost"
@@ -40,22 +45,15 @@
 <script lang="ts" setup>
 import type { NavigationMenuItem } from '@nuxt/ui'
 
+const { playSound } = useSound()
+
 const items: NavigationMenuItem[] = [
   {
-    label: 'Figma Kit',
-    to: 'https://go.nuxt.com/figma-ui',
-    target: '_blank'
+    icon: "i-lucide-creative-commons",
+    label: 'Credits',
+    to: '/credits',
+    onSelect: () => playSound('click')
   }, 
-  {
-    label: 'Playground',
-    to: 'https://stackblitz.com/edit/nuxt-ui',
-    target: '_blank'
-  }, 
-  {
-    label: 'Releases',
-    to: 'https://github.com/nuxt/ui/releases',
-    target: '_blank'
-  }
 ]
 </script>
 
