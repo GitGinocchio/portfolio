@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <UButton
-      v-sound
-      color="primary"
-      variant="solid"
-      size="xl"
-      icon="i-lucide-calendar"
-      class="rounded-xl shadow-lg shadow-primary-500/25 active:scale-95 transition-all cursor-pointer"
-      @click="openCalModal"
-    >
-      Prenota una Call
-    </UButton>
-  </div>
+  <UButton
+    v-sound
+    color="primary"
+    variant="solid"
+    size="xl"
+    icon="i-lucide-calendar"
+    class="rounded-xl shadow-lg shadow-primary-500/25 active:scale-95 transition-all cursor-pointer"
+    @click="openCalModal"
+  >
+    Prenota una Call
+  </UButton>
 </template>
 
 <script setup lang="ts">

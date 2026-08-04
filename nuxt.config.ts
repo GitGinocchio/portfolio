@@ -22,7 +22,13 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@tresjs/nuxt',
+    '@nuxtjs/sitemap'
   ],
+
+  site: {
+    url: 'https://giuliotognetto.dev',
+    name: 'Portfolio of Giulio Tognetto',
+  },
 
   colorMode: {
     preference: "system",

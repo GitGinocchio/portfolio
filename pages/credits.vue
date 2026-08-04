@@ -164,7 +164,7 @@ const techStack = [
   { name: 'Vue', desc: 'Web Framework', icon: 'i-simple-icons-vuedotjs', url: 'https://vuejs.org/' },
   { name: 'Nuxt', desc: 'Vue Framework', icon: 'i-simple-icons-nuxtdotjs', url: 'https://nuxt.com' },
   { name: 'Nuxt UI', desc: 'Component Library', icon: 'i-simple-icons-nuxtdotjs', url: 'https://ui.nuxt.com' },
-  { name: 'Three.js', desc: '3D WebGL Library', icon: 'i-simple-icons-threedotjs', url: 'https://ui.nuxt.com' },
+  { name: 'Three.js', desc: '3D WebGL Library', icon: 'i-simple-icons-threedotjs', url: 'https://threejs.org/' },
   { name: 'Blender', desc: '3D modeling and rigging software', icon: 'i-simple-icons-blender', url: 'https://www.blender.org/' }
 ]
 </script>
