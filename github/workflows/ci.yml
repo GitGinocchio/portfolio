@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+    - 'gh-pages'
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  lint-and-test:
+    name: Lint, Typecheck & Build Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+
+    - name: Install dependencies
+      run: bun install --frozen-lockfile
+
+    - name: Generate Nuxt types
+      run: bun run postinstall # Esegue `nuxt prepare` per generare i tipi .nuxt/
+
+    # 1. Typecheck TypeScript (opzionale ma altamente consigliato per progetti Nuxt/Vue)
+    - name: Run Typecheck
+      run: bunx vue-tsc --noEmit
+
+    # 2. Linter / Format check (decommenta se usi ESLint o Prettier)
+    # - name: Run Linter
+    #   run: bun run lint
+
+    # 3. Test di Build per verificare che non ci siano errori di compilazione
+    - name: Test Build Nuxt
+      run: bun run build
