@@ -35,7 +35,8 @@ jobs:
       run: bun run build
 
     - name: Deploy with Wrangler
-      uses: cloudflare/wrangler-action@v3
+      uses: cloudflare/wrangler-action@v4
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        command: deploy .output/server/index.mjs --assets .output/public
+        wranglerVersion: "4"
+        command: deploy .output/server/index.mjs --assets .output/public --name portfolio
