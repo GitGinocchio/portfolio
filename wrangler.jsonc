@@ -6,6 +6,20 @@
     "binding": "ASSETS",
     "directory": "./.output/public/"
   },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CURSOR_TRACKER",
+        "class_name": "CursorTracker"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["CursorTracker"]
+    }
+  ],
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,

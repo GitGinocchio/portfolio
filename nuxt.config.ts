@@ -42,6 +42,9 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: "cloudflare-module"
+    preset: "cloudflare-module",
+    imports: {
+      dirs: ['./server/durable-objects']
+    }
   }
 })
