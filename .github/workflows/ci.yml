@@ -32,7 +32,7 @@ jobs:
 
     # 1. Typecheck TypeScript (opzionale ma altamente consigliato per progetti Nuxt/Vue)
     - name: Run Typecheck
-      run: bunx vue-tsc --noEmit
+      run: bunx nuxi typecheck
 
     # 2. Linter / Format check (decommenta se usi ESLint o Prettier)
     # - name: Run Linter
