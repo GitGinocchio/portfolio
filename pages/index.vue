@@ -13,7 +13,8 @@ import About from '~/components/sections/About.vue';
 import Projects from '~/components/sections/Projects.vue';
 import Contact from '~/components/sections/Contact.vue';
 
-useSectionObserver(['hero', 'projects', 'about', 'contact'])
+const { initObserver } = useSectionObserver()
+initObserver(['hero', 'about', 'projects', 'contact'])
 
 useHead({
   title: 'Giulio Tognetto - Portfolio',

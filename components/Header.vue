@@ -100,33 +100,38 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import { useSound } from '~/composables/useSound'
 
 const isMenuOpen = ref(false)
+const { activeHash, lockObserverTemporarily } = useSectionObserver()
 const { playSound } = useSound()
 
-const links: NavigationMenuItem[] = [
+const links = computed<NavigationMenuItem[]>(() => [
   {
     label: 'Progetti',
     icon: 'i-heroicons-folder-open',
     to: '/#projects',
-    exactHash: true
+    exactHash: true,
   },
   {
     label: 'Su di me',
     icon: 'i-heroicons-user',
     to: '/#about',
-    exactHash: true
+    exactHash: true,
   },
   {
     label: 'Contatti',
     icon: 'i-heroicons-envelope',
     to: '/#contact',
-    exactHash: true
+    exactHash: true,
   }
-]
+])
 
 const navLinks = computed(() =>
-  links.map(link => ({
+  links.value.map(link => ({
     ...link,
-    onSelect: () => playSound('click')
+    active: activeHash.value === (link.to as string).replace("/", ""),
+    onSelect: () => {
+      lockObserverTemporarily(link.to as string)
+      playSound('click')
+    }
   }))
 )
 </script>
