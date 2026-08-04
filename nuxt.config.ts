@@ -30,6 +30,11 @@ export default defineNuxtConfig({
     name: 'Portfolio of Giulio Tognetto',
   },
 
+  sitemap: {
+    sitemapName: 'sitemap.xml',
+    enabled: true
+  },
+
   colorMode: {
     preference: "system",
     fallback: "white",
