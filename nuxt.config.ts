@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    "nitro-cloudflare-dev",
     '@nuxt/a11y',
     '@nuxt/hints',
     '@nuxt/image',
@@ -43,8 +44,11 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: "cloudflare-module",
-    imports: {
-      dirs: ['./server/durable-objects']
-    }
-  }
+    tracingChannel: true,
+
+    experimental: {
+      tasks: true,
+      websocket: true,
+    },
+  },
 })
