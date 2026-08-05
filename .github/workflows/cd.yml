@@ -39,4 +39,4 @@ jobs:
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         wranglerVersion: "4"
-        command: deploy --name portfolio
+        command: deploy
