@@ -28,7 +28,7 @@
           <BookACall />
           <UButton
             v-sound
-            to="mailto:mail@giuliotognetto.dev"
+            to="mailto:contact@giuliotognetto.dev"
             color="neutral"
             variant="outline"
             size="xl"
