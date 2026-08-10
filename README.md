@@ -6,8 +6,8 @@
 ## About
 ...
 
-# Projects
+## Projects
 ...
 
-# Contacts
+## Contacts
 ![contacts](./.github/media/contacts.jpg)
