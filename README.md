@@ -1,13 +1,25 @@
 # My Portfolio
 
-## Hero
+## Features
+
+- Responsive Design
+- Dark Mode / White Mode
+- Sound Cues on buttons clicks
+- Animated 3D models
+- Cursor Tracker: see who is whatching the site with you!
+- Credits Page
+- Contacts section with <a href="https://cal.com">Cal.com</a>
+
+## Sections
+
+### 1. Hero
 ![hero](./.github/media/hero.jpg)
 
-## About
-...
+### 2. About
+Work in progress...
 
-# Projects
-...
+### 3. Projects
+Work in progress...
 
-# Contacts
+### 4. Contacts 
 ![contacts](./.github/media/contacts.jpg)
