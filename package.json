@@ -37,7 +37,7 @@
     "@iconify-json/lucide": "^1.2.120",
     "@iconify-json/simple-icons": "^1.2.93",
     "@types/node": "^26.1.2",
-    "@types/three": "^0.185.3",
+    "@types/three": "^0.185.4",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
     "eslint": "^10.8.0",
