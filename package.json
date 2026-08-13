@@ -43,7 +43,7 @@
     "@types/three": "^0.185.4",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.65.0",
-    "eslint": "^10.8.0",
+    "eslint": "^10.8.1",
     "eslint-plugin-vue": "^10.10.0",
     "sst": "^4.17.1",
     "typescript": "~7.0.2",
