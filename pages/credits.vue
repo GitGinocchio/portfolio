@@ -112,8 +112,21 @@
 
 <script setup lang="ts">
 useSeoMeta({
-  title: 'Credits — Risorse & Attribuzioni',
-  description: 'Ringraziamenti e attribuzioni per le risorse di terze parti utilizzate nel sito.'
+  title: 'Credits',
+  description: 'Ringraziamenti e attribuzioni per le librerie open source, icone, font e risorse utilizzate nello sviluppo di questo sito.',
+  
+  ogTitle: 'Credits — Giulio Tognetto',
+  ogDescription: 'Ringraziamenti e attribuzioni per le tecnologie, librerie e risorse utilizzate per realizzare questo sito web.',
+  ogImage: 'https://giuliotognetto.dev/og-image.png',
+  ogUrl: 'https://giuliotognetto.dev/credits',
+  ogType: 'website',
+
+  robots: 'noindex, follow',
+
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Credits — Giulio Tognetto',
+  twitterDescription: 'Librerie open source, icone e risorse utilizzate nello sviluppo del sito.',
+  twitterImage: 'https://giuliotognetto.dev/og-image.png',
 })
 
 interface AudioCredit {

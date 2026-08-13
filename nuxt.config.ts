@@ -5,8 +5,39 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  site: {
+    name: 'Giulio Tognetto - Full-Stack Developer',
+    description: 'Portfolio e progetti di Giulio Tognetto, sviluppatore Full-Stack specializzato in Rust, TypeScript e web app ad alte prestazioni.',
+    url: 'https://giuliotognetto.dev',
+    defaultLocale: 'it',
+  },
+
+  schemaOrg: {
+    identity: {
+      type: 'Person',
+      name: 'Giulio Tognetto',
+      url: 'https://giuliotognetto.dev',
+    }
+  },
+
+  i18n: {
+    defaultLocale: 'it',
+    locales: [
+      { code: 'it', iso: 'it-IT', name: 'Italiano' },
+      // Aggiungi altre lingue se le usate, es:
+      // { code: 'en', iso: 'en-US', name: 'English' }
+    ],
+    strategy: 'prefix_except_default',
+  },
+
   app: {
     head: {
+      htmlAttrs: { lang: 'it' },
+      titleTemplate: '%s %separator %siteName',
+      templateParams: {
+        siteName: 'Giulio Tognetto - Full-Stack Developer',
+        separator: '-',
+      },
       link: [
         { rel: 'icon', type: 'image/svg', href: '/cat-tongue.svg' }
       ]
@@ -23,17 +54,26 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/i18n',
     '@tresjs/nuxt',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    '@nuxtjs/seo'
   ],
 
-  site: {
-    url: 'https://giuliotognetto.dev',
-    name: 'Portfolio of Giulio Tognetto',
+  sitemap: {
+    enabled: true,
+    urls: [
+      '/',
+      '/credits'
+    ]
   },
 
-  sitemap: {
-    sitemapName: 'sitemap.xml',
-    enabled: true
+  robots: {
+    // Permetti l'indicizzazione di tutto il sito di default
+    allow: '/',
+    // Blocca la scansione della pagina credits e di eventuali rotte private/API
+    disallow: ['/credits'],
+    // Link alla tua sitemap index
+    sitemap: 'https://giuliotognetto.dev/sitemap_index.xml',
   },
 
   colorMode: {
