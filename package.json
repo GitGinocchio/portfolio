@@ -47,6 +47,6 @@
     "eslint-plugin-vue": "^10.10.0",
     "sst": "^4.17.1",
     "typescript": "~7.0.2",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.10"
   }
 }
