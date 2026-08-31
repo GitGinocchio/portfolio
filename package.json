@@ -20,7 +20,7 @@
     "@nuxt/ui": "^4.10.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/robots": "6.1.5",
-    "@nuxtjs/seo": "^5.3.12",
+    "@nuxtjs/seo": "^5.3.14",
     "@nuxtjs/sitemap": "8.3.4",
     "@takumi-rs/wasm": "^2.10.0",
     "@tresjs/cientos": "^5.8.1",
