@@ -41,7 +41,7 @@
     "@iconify-json/simple-icons": "^1.2.93",
     "@types/node": "^26.2.0",
     "@types/three": "^0.185.4",
-    "@typescript-eslint/eslint-plugin": "^8.67.0",
+    "@typescript-eslint/eslint-plugin": "^8.68.0",
     "@typescript-eslint/parser": "^8.67.0",
     "eslint": "^10.8.1",
     "eslint-plugin-vue": "^10.10.0",
