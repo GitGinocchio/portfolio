@@ -13,14 +13,6 @@
         <Viewer>
           <Scene @update="(delta) => onSceneUpdate(delta)">
             <Camera :look-at="[0, 0, 0]" :position="[0, 0, 5.5]" />
-            <Controls 
-              :target="[0, 0, 0]" 
-              :enable-zoom="false" 
-              :max-polar-angle="Math.PI / 2" 
-              :min-polar-angle="Math.PI / 4"
-              :idle-timeout="2000"
-              :reset-speed="0.05"
-            />
             <Model
               path="/models/lego.glb"
               v-model:loaded="isModelLoaded"
