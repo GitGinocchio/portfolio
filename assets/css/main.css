@@ -5,44 +5,44 @@
   --font-sans: 'Pretendard Std Variable', sans-serif;
   --font-mono: 'Fira Code', monospace;
 
-  /* --- PRIMARY (Spicy Paprika - Altissimo impatto) --- */
-  --color-primary-50:  #fef2ee;
-  --color-primary-100: #fde0d7;
-  --color-primary-200: #fac2b2;
-  --color-primary-300: #f5967d;
-  --color-primary-400: #f06e4a;
-  --color-primary-500: #eb5e28; /* Il tuo arancione brillante */
-  --color-primary-600: #c94615;
-  --color-primary-700: #9e3510;
-  --color-primary-800: #7d2b10;
-  --color-primary-900: #682610;
-  --color-primary-950: #381206;
+  /* --- PRIMARY (Spicy Paprika - Accento vibrante e caldo) --- */
+  --color-primary-50:  #fef3f0;
+  --color-primary-100: #fae4de;
+  --color-primary-200: #f5c9bd;
+  --color-primary-300: #ee9e8b;
+  --color-primary-400: #f0744e;
+  --color-primary-500: #eb5e28; /* Spicy Paprika di base */
+  --color-primary-600: #cc4917;
+  --color-primary-700: #a33710;
+  --color-primary-800: #822c0e;
+  --color-primary-900: #6b260f;
+  --color-primary-950: #381005;
 
-  /* --- SECONDARY (Charcoal Brown - Profondo e netto) --- */
-  --color-secondary-50:  #f4f3f0;
-  --color-secondary-100: #e2ded5;
-  --color-secondary-200: #c4beb1;
-  --color-secondary-300: #9c9484;
-  --color-secondary-400: #736b5c;
-  --color-secondary-500: #544d42;
+  /* --- SECONDARY (Charcoal Brown - Tono di supporto scuro ed elegante) --- */
+  --color-secondary-50:  #f4f3f2;
+  --color-secondary-100: #e2dfda;
+  --color-secondary-200: #c4be5b;
+  --color-secondary-300: #9e9688;
+  --color-secondary-400: #736b5e;
+  --color-secondary-500: #544e43;
   --color-secondary-600: #403d39; /* Charcoal Brown */
   --color-secondary-700: #33302c;
   --color-secondary-800: #262421;
   --color-secondary-900: #1c1a18;
   --color-secondary-950: #0f0e0d;
 
-  /* --- PALETTE GRAY (Contrasto Estremo: Floral White → Carbon Black) --- */
-  --color-gray-50:  #ffffff; /* Bianco ottico puro per massimo contrasto in luce */
-  --color-gray-100: #fffcf2; /* Il tuo Floral White come base chiara morbida ma luminosa */
+  /* --- PALETTE GRAY (Floral White → Dust Grey → Carbon Black) --- */
+  --color-gray-50:  #ffffff; /* Bianco ottico per stacchi netti */
+  --color-gray-100: #fffcf2; /* Floral White come base chiara principale */
   --color-gray-200: #ded8cc;
-  --color-gray-300: #ccc5b9; /* Dust Grey originale */
+  --color-gray-300: #ccc5b9; /* Dust Grey originale per bordi definiti */
   --color-gray-400: #999185;
   --color-gray-500: #665f54;
   --color-gray-600: #4a443c;
   --color-gray-700: #332f2a;
   --color-gray-800: #252422; /* Carbon Black */
-  --color-gray-900: #181715; /* Nero notturno molto scuro */
-  --color-gray-950: #0a0908; /* Nero assoluto per stacchi netti */
+  --color-gray-900: #171615; /* Nero notturno ad alto contrasto */
+  --color-gray-950: #0a0908; /* Nero assoluto per la dark mode */
 
   /* --- STATI --- */
   --color-error-500:   #ef4444;
@@ -55,12 +55,12 @@
   --ui-primary: var(--color-primary-500);
   --ui-secondary: var(--color-secondary-600);
   --ui-gray: var(--color-gray-900);
-  --ui-bg: var(--color-gray-100); /* Sfrutta il Floral White in light mode */
+  --ui-bg: var(--color-gray-100); /* Sfondo Floral White in light mode */
 }
 
 .dark {
   --ui-primary: var(--color-primary-400); 
   --ui-secondary: var(--color-secondary-300);
-  --ui-gray: var(--color-gray-50); /* Testi quasi bianchi (#ffffff) per leggibilità spinta sul scuro */
-  --ui-bg: var(--color-gray-950); /* Sfondo ultra-nero per far risaltare il 3D e l'arancione */
+  --ui-gray: var(--color-gray-50); /* Testi bianchi brillanti per massima leggibilità sul scuro */
+  --ui-bg: var(--color-gray-950); /* Sfondo ultra-nero che fa risaltare il 3D e la paprika */
 }
