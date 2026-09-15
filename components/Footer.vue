@@ -34,7 +34,7 @@
         icon="i-simple-icons-github"
         color="primary"
         variant="ghost"
-        to="https://github.com/GitGinocchio"
+        to="https://github.com/GiulioTognetto"
         target="_blank"
         aria-label="GitHub"
       />

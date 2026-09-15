@@ -6,6 +6,21 @@
   "compatibility_flags": [
     "nodejs_compat_v2"
   ],
+  "placement" : {
+    "mode": "smart"
+  },
+  "cache" : {
+    "enabled": true
+  },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes" : [
+    {
+      "pattern" : "giuliotognetto.dev",
+      "custom_domain" : true,
+      "enabled" : true
+    }
+  ],
   "assets": {
     "not_found_handling": "single-page-application",
     "run_worker_first" : ["/api/*"],
